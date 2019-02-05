@@ -12,6 +12,8 @@
                             <table class="table">
                                 <thead>
                                     <tr>
+                                        <th scope="col">NIP</th>
+                                        <th scope="col">Nama</th>
                                         <th scope="col">Username</th>
                                         <th scope="col">Bagian</th>
                                         <th scope="col" colspan="2">Action</th>
@@ -20,6 +22,24 @@
                                 <tbody>
                                         @foreach ($users as $user)
                                             <tr>
+                                                @if ($user->role === 'admin' || $user->role === 'rekam_medis')
+                                                    <td>
+                                                        @if ($user->staff->NIP_Staff === "")
+                                                            -                                                            
+                                                        @else
+                                                            {{$user->staff->NIP_Staff}}
+                                                        @endif
+                                                    </td>    
+                                                    <td>{{$user->staff->NamaStaff}}</td> 
+                                                @elseif($user->role === 'dokter')
+                                                    <td>{{$user->dokter->NIP_Dokter}}</td>    
+                                                    <td>{{$user->dokter->NamaDokter}}</td> 
+                                                    {{--  <td>nip dokter</td>
+                                                    <td>nama dokter</td>  --}}
+                                                @else
+                                                    <td>{{$user->apoteker->NIP_Apoteker}}</td>    
+                                                    <td>{{$user->apoteker->NamaApoteker}}</td> 
+                                                @endif
                                                 <td>{{$user->username}}</td>
                                                 <td>
                                                     @if ($user->role === 'admin')

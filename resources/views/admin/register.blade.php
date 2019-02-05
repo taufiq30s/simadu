@@ -10,6 +10,33 @@
                 <div class="card-body">
                     <form method="POST" action="/admin/users">
                         @csrf
+                        <div class="form-group row">
+                            <label for="nip" class="col-md-4 col-form-label text-md-right">{{ __('NIP') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="nip" type="nip" class="form-control{{ $errors->has('nip') ? ' is-invalid' : '' }}" name="nip" value="{{ old('nip') }}" required>
+
+                                @if ($errors->has('nip'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('nip') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="nama" class="col-md-4 col-form-label text-md-right">{{ __('Nama') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="nama" type="nama" class="form-control{{ $errors->has('nama') ? ' is-invalid' : '' }}" name="nama" value="{{ old('nama') }}" required>
+
+                                @if ($errors->has('nama'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('nama') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>

@@ -1,5 +1,8 @@
 <?php
 
+//use Symfony\Component\Routing\Annotation\Route;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,6 +15,7 @@
 */
 
 Route::get('/', 'HomeController@root');     // Root, redirect to login page
+// Route::auth();   Uncomment it when Users Table is empty & Comment it when Admin Role is registered
 
 // Authentication Routes...
 Route::get('login', [
@@ -26,7 +30,7 @@ Route::get('login', [
     'as' => 'logout',
     'uses' => 'Auth\LoginController@logout'
   ]);
-
+// End Authentication Routes...
 
 //  Start Middleware Route Login and access page
     Route::group(['middleware' => 'App\Http\Middleware\Admin'], function()
@@ -41,7 +45,6 @@ Route::get('login', [
         Route::put('/admin/user/{username}', 'UsersController@updateByAdmin');
         Route::delete('/admin/user/{username}', 'UsersController@destroy');
         // End User Feature Route
-
         
     });
 

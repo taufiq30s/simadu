@@ -15,7 +15,11 @@ class Dokter
      */
     public function handle($request, Closure $next)
     {
-        if(auth()->user()->role !='dokter')
+        if(auth()->user() === null)
+        {
+            return abort(403);
+        }
+        else if(auth()->user()->role !='dokter')
         {
             return abort(403);
         }

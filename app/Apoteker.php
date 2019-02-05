@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Dokter extends Model
+class Apoteker extends Model
 {
     protected $guarded = [];
-    protected $table = "Dokter";
+    protected $table = "Apoteker";
 
     public function user()
     {

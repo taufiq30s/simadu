@@ -10,12 +10,57 @@
                 <div class="card-body">
                     <form method="POST" action="/admin/user/{{$user->username}}">
                         @csrf
+                        <div class="form-group row">
+                                <label for="nip" class="col-md-4 col-form-label text-md-right">{{ __('NIP') }}</label>
+    
+                                <div class="col-md-6">
+                                    @if ($user->role === 'admin' || $user->role === 'rekam_medis')
+                                        <input id="nip" type="nip" class="form-control{{ $errors->has('nip') ? ' is-invalid' : '' }}" name="nip" value="{{ $roleRelation->NIP_Staff }}" required>
+                                    @elseif($user->role === 'dokter')
+                                        <input id="nip" type="nip" class="form-control{{ $errors->has('nip') ? ' is-invalid' : '' }}" name="nip" value="{{ $roleRelation->NIP_Dokter }}" required>
+                                    @else
+                                        <input id="nip" type="nip" class="form-control{{ $errors->has('nip') ? ' is-invalid' : '' }}" name="nip" value="{{ $roleRelation->NIP_Apoteker }}" required>
+                                    @endif
+    
+                                    @if ($errors->has('nip'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('nip') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+    
+                            <div class="form-group row">
+                                <label for="nama" class="col-md-4 col-form-label text-md-right">{{ __('Nama') }}</label>
+    
+                                <div class="col-md-6">
+                                    @if ($user->role === 'admin' || $user->role === 'rekam_medis')
+                                        <input id="nama" type="nama" class="form-control{{ $errors->has('nama') ? ' is-invalid' : '' }}" name="nama" value="{{ $roleRelation->NamaStaff }}" required>
+                                    @elseif($user->role === 'dokter')
+                                        <input id="nama" type="nama" class="form-control{{ $errors->has('nama') ? ' is-invalid' : '' }}" name="nama" value="{{ $roleRelation->NamaDokter }}" required>
+                                    @else
+                                        <input id="nama" type="nama" class="form-control{{ $errors->has('nama') ? ' is-invalid' : '' }}" name="nama" value="{{ $roleRelation->NamaApoteker }}" required>
+                                    @endif
+                                    
+    
+                                    @if ($errors->has('nama'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('nama') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
 
                         <div class="form-group row">
                             <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
 
                             <div class="col-md-6">
                                 <input id="username" type="username" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ $user->username }}" disabled>
+                                @if ($errors->has('username'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
@@ -25,7 +70,7 @@
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control{{ $errors->has('newPassword') ? ' is-invalid' : '' }}" name="password" >
 
-                                @if ($errors->has('password'))
+                                @if ($errors->has('newPassword'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>

@@ -7,9 +7,7 @@
                     <div class="card">
                         <p><b>Test Menu (Admin)</b></p>
                         <p><a href="admin/users">Users</a></p>
-                        <p><a href="admin/dokter-list">Dokter</a></p>
-                        <p><a href="admin/rm-list">Rekam Medis</a></p>
-                        <p><a href="admin/apoteker">Apoteker</a></p>
+                        <p><a href="admin/ruangan">Daftar Ruangan</a></p>
                     </div>
                 </div>
             </div>

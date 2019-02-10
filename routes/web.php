@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'HomeController@root');     // Root, redirect to login page
-// Route::auth();   Uncomment it when Users Table is empty & Comment it when Admin Role is registered
+// Route::auth();   // Uncomment it when Users Table is empty & Comment it when Admin Role is registered
 
 // Authentication Routes...
 Route::get('login', [
@@ -37,14 +37,23 @@ Route::get('login', [
     {
         Route::match(['get', 'post'], '/admin', 'HomeController@admin');
         
-        // Start User Feature Route
+        // Start User Configuration Route
         Route::get('/admin/users', 'UsersController@index');
         Route::get('/admin/new-user', 'UsersController@create');
         Route::post('/admin/users', 'UsersController@register');
         Route::get('/admin/edit-user/{username}', 'UsersController@editByAdmin');
         Route::put('/admin/user/{username}', 'UsersController@updateByAdmin');
         Route::delete('/admin/user/{username}', 'UsersController@destroy');
-        // End User Feature Route
+        // End User Configuration Route
+
+        // Start Room Configuration Route
+        Route::get('/admin/ruangan', 'RoomController@index');
+        Route::get('/admin/add-ruangan', 'RoomController@create');
+        Route::post('/admin/ruangan', 'RoomController@register');
+        Route::get('/admin/ruangan/{kdRuangan}/edit', 'RoomController@edit');
+        Route::put('/admin/ruangan/{kdRuangan}', 'RoomController@update');
+        Route::delete('/admin/ruangan/{kdRuangan}', 'RoomController@destroy');
+        // End Room Configuration Route
         
     });
 
@@ -64,6 +73,13 @@ Route::get('login', [
     });
 
 //  End Middleware Route Login and access page
+
+
+
+
+
+
+
 
 
 // Admin Route Page

@@ -16,6 +16,7 @@ class CreateTableRuangan extends Migration
         Schema::create('Ruangan', function (Blueprint $table) {
             $table->integer('KodeRuangan')->autoIncrement();
             $table->string('NamaRuangan');
+            $table->string('ipComputer');
         });
     }
 

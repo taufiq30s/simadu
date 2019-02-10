@@ -22,7 +22,7 @@ class UsersController extends Controller
 
     public function create()
     {
-        return view('admin/register');
+        return view('admin/userRegister');
     }
 
     protected function validator(array $data)
@@ -97,7 +97,7 @@ class UsersController extends Controller
         else
             $roleRelation = $user->apoteker;
         $now = \Auth::user()->username;
-        return view('admin/edit', ['user' => $user, 'userNow' => $now, 'roleRelation' => $roleRelation]);
+        return view('admin/userEdit', ['user' => $user, 'userNow' => $now, 'roleRelation' => $roleRelation]);
     }
 
     protected function checkAndUpdateUserTable(request $req, $username, object $user)

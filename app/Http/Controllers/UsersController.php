@@ -29,7 +29,7 @@ class UsersController extends Controller
     {        
         if(isset($data['username']))
             return Validator::make($data, [
-                'nip' => ['required', 'string', 'min:18', 'max:18'],
+                'nip' =>['required', 'string', 'min:18', 'max:18', 'unique:users,nip'],
                 'nama' => ['required', 'string'],
                 'username' => ['required', 'string', 'max:255', 'unique:users,username'],
                 'password' => ['required', 'string', 'min:6', 'confirmed'],
@@ -59,6 +59,7 @@ class UsersController extends Controller
                 'username' => $data['username'],
                 'password' => Hash::make($data['password']),
                 'role' => $data['role'],
+                'nip' => $data['nip'],
             ]);
         if($data['role'] === 'dokter')
             return Dokter::create([
@@ -102,6 +103,7 @@ class UsersController extends Controller
 
     protected function checkAndUpdateUserTable(request $req, $username, object $user)
     {
+        $user->nip = $req->nip;
         if(($username === 'admin' && $req->password === null) || ($req->role === $user->role) && $req->password === null)
             return 0;
         else if($req->role === $user->role) {
@@ -169,7 +171,6 @@ class UsersController extends Controller
         {
             if(($request->role != 'admin' && $request->role != 'rekam_medis') || ($user->role != 'admin' && $user->role != 'rekam_medis'))
             {
-                // dd('masuk');
                 $roleChange = $this->destroyRole($user);
                 $req = $request->toArray();
                 $req['username'] = $username;
@@ -219,6 +220,7 @@ class UsersController extends Controller
         return redirect('/admin/users');
     }
 
+    // Update By User
     public function updateByUser(Request $request, $username)
     {
         $user = (User::where('username', $username)->first());

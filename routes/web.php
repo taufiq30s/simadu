@@ -54,6 +54,11 @@ Route::get('login', [
         Route::put('/admin/ruangan/{kdRuangan}', 'RoomController@update');
         Route::delete('/admin/ruangan/{kdRuangan}', 'RoomController@destroy');
         // End Room Configuration Route
+
+        // Start Special Admin Program Configuration
+        Route::get('/admin/config', 'ConfigController@index');
+        Route::post('/admin/config/apply', 'ConfigController@apply');
+        // End Special Admin Program Configuration
         
     });
 
@@ -65,6 +70,12 @@ Route::get('login', [
     Route::group(['middleware' => 'App\Http\Middleware\RekamMedis'], function()
     {
         Route::match(['get', 'post'], '/rekmed', 'HomeController@rekamMedis');
+
+        // Start Pasien Route From Rekmed
+        Route::get('/rekmed/pasien', 'PasienController@showPasienDataByRekmed');
+        Route::get('/rekmed/pasien/daftar', 'PasienController@registPasien');
+        Route::post('/redmed/pasien', 'PasienController@register');
+        // End Pasien Route From Rekmed
     });
 
     Route::group(['middleware' => 'App\Http\Middleware\Apoteker'], function()

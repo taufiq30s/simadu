@@ -17,7 +17,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
      * @var array
      */
     protected $fillable = [
-        'username', 'password', 'role',
+        'nip', 'username', 'password', 'role',
     ];
 
     /**

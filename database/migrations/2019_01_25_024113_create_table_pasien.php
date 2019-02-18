@@ -24,6 +24,7 @@ class CreateTablePasien extends Migration
             $table->longtext('RiwayatAlergi')->nullable();
             $table->string('NoHP');
             $table->timestamps();
+            $table->string('PetugasRM');
             $table->foreign('NoKK')->references('NoKK')->on('Map');
         });
     }

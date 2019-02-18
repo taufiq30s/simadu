@@ -8,6 +8,7 @@
                         <p><b>Test Menu (Admin)</b></p>
                         <p><a href="admin/users">Users</a></p>
                         <p><a href="admin/ruangan">Daftar Ruangan</a></p>
+                        <p><a href="admin/config">Pengaturan Sistem</a></p>
                     </div>
                 </div>
             </div>

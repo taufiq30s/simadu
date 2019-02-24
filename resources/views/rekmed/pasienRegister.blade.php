@@ -1,158 +1,174 @@
-@extends('layouts.app')
+<div class="modal fade bd-example-modal-lg" style="margin-left: 20%;" id="Modal_Input_Patient" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <form action="rekmed/pasien" method="post">
+        @csrf
+        <!--Modal cascading tabs-->
+        <div class="modal-tabs modal-tabs-centered">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Daftar Pasien Baru') }}</div>
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs md-tabs tabs-2 " role="tablist" id="Input_Patient_Tab">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" href="#Add_Information_Patient" role="tab"><i class="fas fa-user mr-1"></i>
+                Data Pasien</a>
+            </li>
+          </ul>
 
-                <div class="card-body">
-                    <form method="POST" action="/rekmed/pasien">
-                        @csrf
-                        <div class="form-group row">
-                            <label for="NoPasien" class="col-md-4 col-form-label text-md-right">{{ __('Nomor Pasien') }}</label>
-                            
-                            <div class="col-md-6">
-                                <input id="NoPasien" type="NoPasien" class="form-control{{ $errors->has('NoPasien') ? ' is-invalid' : '' }}" name="NoPasien" value="{{ old('NoPasien') }}" required>
+          <!-- Tab panels -->
+          <div class="tab-content">
+            <!--Panel 7-->
+            <div class="tab-pane fade in show active" id="Add_Information_Patient" role="tabpanel">
 
-                                @if ($errors->has('NoPasien'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('NoPasien') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+              <!--Body-->
+              <div class="modal-body mb-1">
+                <div class="row">
+                  <div class="col-6">
+                    <div class="container">
+                      <!-- Nomor MAP -->
+                      <div class="form-group">
+                        <label data-error="wrong" data-success="right" for="noMap">Nomor Map <span class="text-danger">*</span></label>
+                        <div class="form-row">
+                          <div class="col">
+                            <input type="text" class="form-control" id="noMap" name="noMap" data-inputmask="'mask': ['M-999999']" data-mask required>
+                          </div>
+                          <div class="col">
+                            <button type="button" class="btn btn-info" id="getNoKK">Ambil No KK</button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Nomor KK -->
+                      <div class="form-group">
+                        <label data-error="wrong" data-success="right" for="noKK">Nomor KK <span class="text-danger">*</span></label>
+                        <div class="form-row">
+                          <div class="col">
+                            <input type="text" class="form-control" id="noKK" name="noKK" data-inputmask="'mask': ['9999-9999-9999-9999']" data-mask
+                              required>
+                          </div>
+                          <div class="col">
+                            <button type="button" class="btn btn-info" id="getNoMap">Ambil No Map</button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Nama Kepala Keluarga -->
+                      <div class="form-group">
+                        <label data-error="wrong" data-success="right" for="namaKK">Nama Kepala Keluarga <span class="text-danger">*</span></label>
+                        <div class="form-row">
+                          <div class="col">
+                            <input type="text" class="form-control" id="namaKK" name="namaKK" disabled>
+                          </div>
+                        </div>
+                        <div class="pakaiNamaKK form-check form-check-inline" style="display:none">
+                          <input type="checkbox" class="form-check-input" name="pakeNamaKK" id="pakeNamaKK">
+                          <label for="pakeNamaKK" class="form-check-label" style="font-size:15px;"> Nama Pasien Sama Dengan Nama Kepala Keluarga</label>
+                        </div>
+                      </div>
+
+                      <!-- Nomor NIK -->
+                      <div class="form-group">
+                        <label data-error="wrong" data-success="right" for="noNIK">Nomor NIK <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="noNIK" name="noNIK" data-inputmask="'mask': ['9999-9999-9999-9999']"
+                          data-mask required>
+                      </div>
+
+                      <!-- Nomor BPJS -->
+                      <div class="form-group">
+                        <label data-error="wrong" data-success="right" for="noBPJS">Nomor BPJS </label>
+                        <input type="text" class="form-control" id="noBPJS" name="noBPJS" data-inputmask="'mask': ['9999-9999-9999-9999']"
+                          data-mask required>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-6">
+                    <div class="container">
+                      <!-- Nama Lengkap -->
+                      <div class="form-group">
+                        <label data-error="wrong" data-success="right" for="namaPasien">Nama Lengkap <span class="text-danger">*</span></label>
+                        <input type="text" id="namaPasien" class="form-control form-control validate" name="namaPasien" required>
+                      </div>
+
+                      <!-- Tempat dan Tanggal Lahir -->
+                      <div class="row">
+                        <!-- Tempat Lahir -->
+                        <div class="col-5">
+                          <div class="form-group">
+                            <label data-error="wrong" data-success="right" for="tempatLahir">Tempat Lahir <span class="text-danger">*</span></label>
+                            <input type="text" id="tempatLahir" class="form-control form-control validate" name="tempatLahir" required>
+                          </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="NoKK" class="col-md-4 col-form-label text-md-right">{{ __('No KK') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="NoKK" type="NoKK" class="form-control{{ $errors->has('NoKK') ? ' is-invalid' : '' }}" name="NoKK" value="{{ old('NoKK') }}" required>
-                                
-                                @if ($errors->has('NoKK'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('NoKK') }}</strong>
-                                    </span>
-                                @endif
+                        <!-- Tanggal Lahir -->
+                        <div class="col-7">
+                          <div class="form-group">
+                            <label data-error="wrong" data-success="right" for="tanggalLahir">Tanggal Lahir <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                              </div>
+                              <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" id="tanggalLahir" name="tanggalLahir"
+                                data-mask required>
                             </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Jenis Kelamin -->
+                      <div class="row">
+                        <div class="col-12">
+                          <label>Jenis Kelamin <span class="text-danger">*</span></label>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="NoKTP" class="col-md-4 col-form-label text-md-right">{{ __('No KTP') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="NoKTP" type="NoKTP" class="form-control{{ $errors->has('NoKTP') ? ' is-invalid' : '' }}" name="NoKTP" value="{{ old('NoKTP') }}" required>
-                                
-                                @if ($errors->has('NoKTP'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('NoKTP') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                        <div class="col-6">
+                          <div class="form-group">
+                            <label class="font-weight-normal">  
+                                <input type="radio" name="jenisKelamin" class="minimal" value="Laki-Laki" required> Laki-laki
+                              </label>
+                          </div>
                         </div>
-                        
-                        <div class="form-group row">
-                            <label for="NoBPJS" class="col-md-4 col-form-label text-md-right">{{ __('No BPJS') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="NoBPJS" type="NoBPJS" class="form-control{{ $errors->has('NoBPJS') ? ' is-invalid' : '' }}" name="NoBPJS" value="{{ old('NoBPJS') }}" required>
-                                
-                                @if ($errors->has('NoBPJS'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('NoBPJS') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                        <div class="col-6">
+                          <div class="form-group">
+                            <label class="font-weight-normal">
+                                <input type="radio" name="jenisKelamin" class="minimal" value="Perempuan" required> Perempuan
+                              </label>
+                          </div>
                         </div>
+                      </div>
 
-                        <div class="form-group row">
-                            <label for="NamaPasien" class="col-md-4 col-form-label text-md-right">{{ __('Nama') }}</label>
+                      <!-- Nomor Handphone -->
+                      <div class="form-group">
+                        <label data-error="wrong" data-success="right" for="hp_patient">Nomor Handphone </label>
+                        <input type="text" class="form-control" id="hp_patient" name="hp_patient" data-inputmask="'mask': ['9999-9999-9999', '+62899-9999-9999', '999-9999-9999', '9999-9999-999']"
+                          data-mask required>
+                      </div>
 
-                            <div class="col-md-6">
-                                <input id="NamaPasien" type="NamaPasien" class="form-control{{ $errors->has('NamaPasien') ? ' is-invalid' : '' }}" name="NamaPasien" value="{{ old('NamaPasien') }}" required>
-                                
-                                @if ($errors->has('NamaPasien'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('NamaPasien') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="JK" class="col-md-4 col-form-label text-md-right">{{ __('Jenis Kelamin') }}</label>
-
-                            <div class="col-md-6">
-                                <label class="radio-inline">
-                                    <input type="radio" name="JK" value="L">Laki-Laki
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="JK" value="P">Peremupan
-                                </label>
-                                
-                                @if ($errors->has('JK'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('JK') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="TglLahir" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal Lahir') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="NoBPJS" type="NoBPJS" class="form-control{{ $errors->has('NoBPJS') ? ' is-invalid' : '' }}" name="NoBPJS" value="{{ old('NoBPJS') }}" required>
-                                
-                                @if ($errors->has('NoBPJS'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('NoBPJS') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="NoBPJS" class="col-md-4 col-form-label text-md-right">{{ __('No BPJS') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="NoBPJS" type="NoBPJS" class="form-control{{ $errors->has('NoBPJS') ? ' is-invalid' : '' }}" name="NoBPJS" value="{{ old('NoBPJS') }}" required>
-                                
-                                @if ($errors->has('NoBPJS'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('NoBPJS') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="NoBPJS" class="col-md-4 col-form-label text-md-right">{{ __('No BPJS') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="NoBPJS" type="NoBPJS" class="form-control{{ $errors->has('NoBPJS') ? ' is-invalid' : '' }}" name="NoBPJS" value="{{ old('NoBPJS') }}" required>
-                                
-                                @if ($errors->has('NoBPJS'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('NoBPJS') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Tambah') }}
-                                </button>
-                                <a href="{{ url()->previous() }}" class="btn btn-danger">Kembali</a>
-                            </div>
-                        </div>
-                    </form>
+                      <!-- Riwayat Alergi -->
+                      <div class="md-form form-sm">
+                        <label data-error="wrong" data-success="right" for="riwayatAlergi">Riwayat Alergi (Opsional)</label>
+                        <textarea name="riwayatAlergi" id="riwayatAlergi" style="resize: none;" class="form-control"></textarea>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+
+                <div class="text-center mt-4">
+                  <button type="submit" class="btn btn-success" name="btn_finish_input_patient">Daftar</button>
+                  <button type="reset" class="btn btn-danger" style="margin-left:1.5rem">Reset</button>
+                </div>
+              </div>
+              <!--Footer-->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger waves-effect ml-auto" data-dismiss="modal">Close</button>
+              </div>
             </div>
+            <!--/.Panel 7-->
+          </div>
         </div>
+      </form>
     </div>
+    <!--/.Content-->
+  </div>
 </div>
-@endsection

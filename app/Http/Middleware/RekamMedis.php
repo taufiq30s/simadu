@@ -15,7 +15,11 @@ class RekamMedis
      */
     public function handle($request, Closure $next)
     {
-        if(auth()->user()->role !='rekam_medis')
+        if(auth()->user() === null)
+        {
+            return abort(403);
+        }
+        else if(auth()->user()->role !='rekam_medis')
         {
             return abort(403);
         }

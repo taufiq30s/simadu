@@ -8,4 +8,9 @@ class Pasien extends Model
 {
     protected $guarded = [];
     protected $table = "Pasien";
+
+    public function map()
+    {
+        return $this->hasOne(Map::class, 'NoKK', 'NoKK');
+    }
 }

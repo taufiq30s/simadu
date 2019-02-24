@@ -39,7 +39,7 @@ class HomeController extends Controller
 
     public function rekamMedis()
     {
-        return view('rekamMedis');
+        return view('rekamMedis', ['view' => 'dashboard']);
     }
 
     public function apoteker()

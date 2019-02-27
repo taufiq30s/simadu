@@ -742,8 +742,8 @@
 				startMonth = this.o.startDate !== -Infinity ? this.o.startDate.getUTCMonth() : -Infinity,
 				endYear = this.o.endDate !== Infinity ? this.o.endDate.getUTCFullYear() : Infinity,
 				endMonth = this.o.endDate !== Infinity ? this.o.endDate.getUTCMonth() : Infinity,
-				todaytxt = dates[this.o.language].today || dates['en'].today || '',
-				cleartxt = dates[this.o.language].clear || dates['en'].clear || '',
+				todaytxt = dates[this.o.language].today || dates['id'].today || '',
+				cleartxt = dates[this.o.language].clear || dates['id'].clear || '',
 				tooltip;
 			this.picker.find('.datepicker-days thead th.datepicker-switch')
 						.text(dates[this.o.language].months[month]+' '+year);
@@ -1396,9 +1396,9 @@
 		daysOfWeekDisabled: [],
 		endDate: Infinity,
 		forceParse: true,
-		format: 'mm/dd/yyyy',
+		format: 'dd/mm/yyyy',
 		keyboardNavigation: true,
-		language: 'en',
+		language: 'id',
 		minViewMode: 0,
 		multidate: false,
 		multidateSeparator: ',',
@@ -1425,6 +1425,17 @@
 			monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
 			today: "Today",
 			clear: "Clear"
+		},
+		id: {
+			days: ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'],
+			daysShort: ['Min','Sen','Sel','Rab','kam','Jum','Sab'],
+			daysMin: ['Mg','Sn','Sl','Rb','Km','jm','Sb'],
+			months: ['Januari','Februari','Maret','April','Mei','Juni',
+			'Juli','Agustus','September','Oktober','Nopember','Desember'],
+			monthsShort: ['Jan','Feb','Mar','Apr','Mei','Jun',
+			'Jul','Agus','Sep','Okt','Nop','Des'],
+			today: "Hari Ini",
+			clear: "Tutup"
 		}
 	};
 

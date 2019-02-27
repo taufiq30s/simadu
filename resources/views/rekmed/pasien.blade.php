@@ -84,13 +84,15 @@
     <!-- /.row -->
     
     @include('rekmed/datapasien')
-
+    @include('rekmed/pasienEdit')
+    @include('rekmed/pasienView')
     <div class="row">
       <div class="col-12">
         <div class="container">
-          <table id="dt_patient_dashboard" class="table table-striped">
+          <table id="dt_pasien_dashboard" class="table table-striped">
             <thead>
               <tr class="text-center">
+                <th>No. Pasien</th>
                 <th>No. Map</th>
                 <th>NIK</th>
                 <th>NO. KK</th>
@@ -100,28 +102,7 @@
               </tr>
             </thead>
             <tbody>
-              @foreach ($pasiens as $pasien)
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td class="text-center">
-                    if($pasien->NoBPJS === null)
-                      <i class="fas fa-times text-danger"></i>
-                    else
-                      <i class="fas fa-times text-sucess"></i>
-                  </td>
-                  <td>
-                    <button class="btn btn-outline-success btn-sm" data-toggle="popover" id="btn_add_rekam_medis"><i class="fas fa-plus"></i></button>
-                    <button class="btn btn-outline-primary btn-sm" data-toggle="popover" id="btn_detail_patient"><i class="far fa-eye"></i></button>
-                    <button class="btn btn-outline-warning btn-sm" data-toggle="popover" id="btn_edit_patient"><i class="fas fa-edit"></i></button>
-                    <button class="btn btn-outline-danger btn-sm" data-toggle="popover" id="btn_delete_patient"><i class="fas fa-trash"></i></button>
-                  </td>
-                </tr>
-              @endforeach
-              
-              
+          
             </tbody>
           </table>
         </div>
@@ -131,3 +112,4 @@
   </div>
   <!-- /container-fluid -->
 </section>
+<script>document.title = "Data Pasien | Dashboard";</script>

@@ -20,6 +20,7 @@ class CreateTablePasien extends Migration
             $table->string('NoBPJS')->unique()->nullable();
             $table->string('NamaPasien');
             $table->string('JK');
+            $table->string('TempatLahir');
             $table->date('TglLahir');
             $table->longtext('RiwayatAlergi')->nullable();
             $table->string('NoHP');

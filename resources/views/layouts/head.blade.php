@@ -40,4 +40,14 @@
   <link rel="stylesheet" href="{{asset('bower_components/admin-lte/dist/css/Puskesmas.css?v=1.0')}}">
   <!-- DataTables -->
   <link rel="stylesheet" href="{{asset('bower_components/admin-lte/plugins/datatables/dataTables.bootstrap4.css')}}">
+
+  <style>
+    .search{
+      display: none;
+    }
+    #view > tbody > tr > td:first-child{
+      width: 200px;
+    }
+  }
+  </style>
 </head>

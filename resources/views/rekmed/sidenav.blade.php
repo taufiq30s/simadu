@@ -1,4 +1,4 @@
-<aside class="main-sidebar elevation-4 sidebar-light-success">
+<aside class="main-sidebar elevation-4 sidebar-dark-success">
   <!-- Brand Logo -->
   <a href="index3.html" class="brand-link bg-success">
     <div class="brand-image img-circle elevation-3" style="margin-top:2px;"> <i class="fas fa-plus"></i> </div>
@@ -36,7 +36,6 @@
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
               Dashboard
-              <span class="right badge badge-danger">Beta</span>
             </p>
           </a>
         </li>
@@ -68,34 +67,7 @@
           </a>
         </li>
 
-        <li class="nav-header">EXAMPLES</li>
-
-        <li class="nav-header">MISCELLANEOUS</li>
-        <li class="nav-item">
-          <a href="https://adminlte.io/docs" class="nav-link">
-            <i class="nav-icon fa fa-file"></i>
-            <p>Documentation</p>
-          </a>
-        </li>
-        <li class="nav-header">LABELS</li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-angle-right fa-sm text-danger"></i>
-            <p class="text">Important</p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-angle-right fa-sm text-warning"></i>
-            <p>Warning</p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-angle-right fa-sm text-info"></i>
-            <p>Informational</p>
-          </a>
-        </li>
+        <li class="nav-header">Laporan</li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

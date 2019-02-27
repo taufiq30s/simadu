@@ -22,6 +22,8 @@
     @include('layouts/foot')  
     @if($view === 'map')
         @include('rekmed/fetchMap');
+    @elseif($view === 'pasien')
+        @include('rekmed/fetchPasien');
     @else
         </script>
     @endif  

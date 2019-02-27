@@ -24,6 +24,7 @@
     },
     "dependencies": {
         "admin-lte": "^3.0.0-alpha.2",
+        "idle-timer": "^1.2.0",
         "sweetalert": "^2.1.2"
     }
 }

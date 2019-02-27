@@ -3,7 +3,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <!--Content-->
     <div class="modal-content">
-      <form action="" id="mapRegist"
+      <form action="" id="mapRegist">
         @csrf
         <!--Modal cascading tabs-->
         <div class="modal-tabs modal-tabs-centered">

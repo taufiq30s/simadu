@@ -16,6 +16,7 @@ class CreateTableMap extends Migration
         Schema::create('Map', function (Blueprint $table) {
             $table->string('NoMap')->primary();
             $table->string('NoKK')->unique();
+            $table->string('NamaKepalaKeluarga');
             $table->string('Alamat');
             $table->timestamps();
         });

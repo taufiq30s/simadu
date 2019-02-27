@@ -73,10 +73,14 @@ Route::get('login', [
 
         // Start Pasien Route From Rekmed
         Route::get('/rekmed/pasien', 'PasienController@showPasienDataByRekmed');
-        Route::get('/rekmed/pasien/daftar', 'PasienController@registPasien');
         Route::get('/rekmed/pasien/cekmap', 'PasienController@cekMap');
         Route::get('/rekmed/pasien/cekkk', 'PasienController@cekKK');
-        Route::post('/redmed/pasien', 'PasienController@register');
+        Route::get('/rekemd/pasien/fetch', 'PasienController@fetchTable')->name('pasien.fetch');
+        Route::get('/rekmed/pasien/fetch/{cat}', 'PasienController@fetchTable');
+        Route::post('/rekmed/pasien', 'PasienController@register');
+        Route::get('/rekmed/pasien/{noPasien}/edit', 'PasienController@edit');
+        Route::put('/rekmed/pasien/{noPasien}', 'PasienController@update');
+        Route::delete('/rekmed/pasien/{noPasien}', 'PasienController@destroy');
         // End Pasien Route From Rekmed
         
         // Start Map Route From Rekmed

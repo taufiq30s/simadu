@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 use App\Map;
 use \Validator;
-use function GuzzleHttp\json_encode;
-use function GuzzleHttp\json_decode;
 use DataTables;
 
 class MapController extends Controller
@@ -15,7 +13,7 @@ class MapController extends Controller
     public function showMapDatabyRekmed()
     {
         $map = Map::all();
-        return view('rekamMedis', ['maps' => $map, 'view' => 'map']);
+        return view('rekamMedis', ['view' => 'map']);
     }
 
     public function fetchTable()
@@ -47,7 +45,6 @@ class MapController extends Controller
     protected function store(array $data)
     {
         $count = Map::count();
-        //return json_encode($count);
         if($count === 0)
         {
             $MapID = 'M-000001';            
@@ -56,7 +53,6 @@ class MapController extends Controller
         {
             $fetchLastMapID = (Map::orderBy('created_at', 'desc')->first());
             $MapID = explode("-", $fetchLastMapID);
-            //return json_encode(Map::all());
             $MapID = 'M-'.sprintf('%06d', ((int)$MapID[1])+1);
         }           
         
@@ -71,9 +67,7 @@ class MapController extends Controller
     public function register(Request $req)
     {
         $this->validator($req->all(),1)->validate();
-        event(new Registered($map = $this->store($req->all())));
-        // $debug = $this->store($req->all());
-        // return response()->json(['success' => true, 'debug' => $debug]); //debug
+        event(new Registered($this->store($req->all())));
         return response()->json(['success' => true]);
     }
 

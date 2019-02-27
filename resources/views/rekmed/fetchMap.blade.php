@@ -1,4 +1,3 @@
-        var coba;
         $.extend( $.fn.dataTable.defaults, {
             language: {
                 "processing": "Mohon Menunggu..."

@@ -48,6 +48,6 @@
     #view > tbody > tr > td:first-child{
       width: 200px;
     }
-  }
+    
   </style>
 </head>

@@ -2,7 +2,7 @@
     <div class="row mt-3">
       <div class="col col-lg-4 col-4">
         <!-- Modal Data Rekam Medis-->
-        <?php include 'Input_Rekam_Medis.php'; ?>
+        @include('rekmed/kunjunganRegister')
         <!-- /Modal Data Rekam Medis-->
 
         <div class="text-left mb-3">

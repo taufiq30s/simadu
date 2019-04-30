@@ -24,6 +24,8 @@
         @include('rekmed/fetchMap');
     @elseif($view === 'pasien')
         @include('rekmed/fetchPasien');
+    @elseif($view === 'kunjungan')
+        @include('rekmed/kunjungan');
     @else
         </script>
     @endif  

@@ -91,6 +91,18 @@ Route::get('login', [
         Route::put('/rekmed/map/{noMap}', 'MapController@update');
         Route::delete('/rekmed/map/{noMap}', 'MapController@destroy');
         // End Map Route From Rekemd
+
+        // Start Kunjungan Route From Rekmed
+        Route::get('/rekmed/kunjungan', 'KunjunganController@showKunjunganDataByRekmed');
+        Route::get('/rekmed/pasien/cekmap', 'PasienController@cekMap');
+        Route::get('/rekmed/pasien/cekkk', 'PasienController@cekKK');
+        Route::get('/rekemd/pasien/fetch', 'PasienController@fetchTable')->name('pasien.fetch');
+        Route::get('/rekmed/pasien/fetch/{cat}', 'PasienController@fetchTable');
+        Route::post('/rekmed/pasien', 'PasienController@register');
+        Route::get('/rekmed/pasien/{noPasien}/edit', 'PasienController@edit');
+        Route::put('/rekmed/pasien/{noPasien}', 'PasienController@update');
+        Route::delete('/rekmed/pasien/{noPasien}', 'PasienController@destroy');
+        // End Kunjungan Route From Rekmed
     });
 
     Route::group(['middleware' => 'App\Http\Middleware\Apoteker'], function()

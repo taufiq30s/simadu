@@ -13,4 +13,9 @@ class Pasien extends Model
     {
         return $this->hasOne(Map::class, 'NoKK', 'NoKK');
     }
+
+    public function kunjungan()
+    {
+        return $this->hasMany(Kunjungan::class, 'NoPasien', 'NoPasien');
+    }
 }

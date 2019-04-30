@@ -44,11 +44,14 @@
 <script src="{{asset('sweetalert/dist/sweetalert.min.js')}}"></script>
 <!-- IdleTimer -->
 <script src="{{asset('js/idle-timer.min.js')}}"></script>
+<!-- SmartWizard -->
+<script type="text/javascript" src="../dist/js/jquery.smartWizard.min.js"></script>
 
 
 <script type="text/javascript">
   moment.locale('id');
 
+  // Set Waktu TimeOut Ketika User Idle
   $(function() {
     // Set idle time
     $(document).idleTimer( 7200000 );
@@ -61,6 +64,7 @@
       });  
   });
 
+  // Test JS Function
   function next_input_tab() {
     $('#Input_Patient_Tab a[href="#Add_Information_Disease"]').tab('show')
   }
@@ -68,10 +72,11 @@
     $('#Input_Patient_Tab a[href="#Add_Information_Patient"]').tab('show')
   }
   function validate_delete_rekam_medis() {
-  	confirm('Apakah data ini ingin di hapus?')
+    confirm('Apakah data ini ingin di hapus?')
   }
+    
+  
 
-  $(function () {
     //Initialize Select2 Elements
     $('.select2').select2()
     $('.S2_nik_irm').select2()
@@ -144,7 +149,7 @@
 
     /*Pasien Area*/
     // === Get NoKK Based from No Map === //
-
+    // == This function for Input Modal == //
     $("#getNoKK").click(function() {
       getNoKK();
       $('#noKK').focus();
@@ -197,6 +202,62 @@
               icon: 'error'
             });
             $('#noMap').focus();
+          }
+        }
+      })
+    }
+    // == End of Function == //
+    // == This function for Edit Modal == //
+    $("#getNoKK_edit").click(function() {
+      getNoKK_Edit();
+      $('#noKK_edit').focus();
+    });
+
+    $('#noMap_edit').keypress(function(event){
+      var keycode = (event.keyCode ? event.keyCode : event.which);
+      if(keycode == '13'){
+        getNoKK_Edit();
+        $('#noKK_edit').focus();	
+      }
+    });
+
+    function getNoKK_Edit(){
+      $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: "/rekmed/pasien/cekmap",
+        type: 'GET',
+        data: {
+            noMap : $("#noMap_edit").val(),
+            _token : $('meta[name="csrf-token"]').attr('content'), 
+        },
+        dataType: 'json',
+        success: function(data){
+          if(data.exists){
+            $("#noKK_edit").val(data.noKK);
+            $("#namaKK_edit").val(data.namaKK);
+            $("#noKK_edit").prop("disabled", true);
+            $("#getNoMap_edit").prop("disabled", true);
+            if(data.count == 1){
+              $(".pakaiNamaKK_edit").show();
+            }
+            else
+              $(".pakaiNamaKK_edit").hide();
+              $("#pakeNamaKK_edit").prop("checked", false);
+          }
+          else{
+            $(".pakaiNamaKK_edit").hide();
+            $("#noKK_edit").prop("disabled", false);
+            $("#getNoMap_edit").prop("disabled", false);
+            const msg = document.createElement('div');
+            msg.innerHTML = "Pastikan anda memasukkan Nomor Map dengan benar atau Nomor Map sudah terdaftar di <a href='/rekmed/map'>sini</a>!";
+            swal({
+              title: 'Nomor Map Tidak Ditemukan',
+              content: msg,
+              icon: 'error'
+            });
+            $('#noMap_edit').focus();
           }
         }
       })

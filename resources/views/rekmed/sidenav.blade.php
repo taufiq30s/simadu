@@ -13,7 +13,8 @@
         <img src="{{asset('bower_components/admin-lte/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="#" class="d-block">
+        <a href="{{ route('logout') }}" class="d-block" onclick="event.preventDefault();
+        document.getElementById('logout-form').submit();">
           @php($role = Auth::user()->role)
           @if ($role === 'rekam_medis')
             {{Auth::User()->staff->NamaStaff}}
@@ -23,6 +24,9 @@
             {{Auth::user()->apoteker->NamaApoteker}}              
           @endif
         </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+          @csrf
+      </form>
       </div>
     </div>
 
@@ -44,7 +48,7 @@
           <a href="/rekmed/kunjungan" class="nav-link">
             <i class="nav-icon far fa-file-alt"></i>
             <p>
-              Rekam Medis
+              Kunjungan
             </p>
           </a>
         </li>

@@ -38,34 +38,34 @@
                             <input type="text" class="form-control" id="noMap_edit" name="noMap" data-inputmask="'mask': ['M-999999']" data-mask required>
                           </div>
                           <div class="col">
-                            <button type="button" class="btn btn-info" id="getNoKK">Ambil No KK</button>
+                            <button type="button" class="btn btn-info" id="getNoKK_edit">Ambil No KK</button>
                           </div>
                         </div>
                       </div>
 
                       <!-- Nomor KK -->
                       <div class="form-group">
-                        <label data-error="wrong" data-success="right" for="noKK">Nomor KK <span class="text-danger">*</span></label>
+                        <label data-error="wrong" data-success="right" for="noKK_edit">Nomor KK <span class="text-danger">*</span></label>
                         <div class="form-row">
                           <div class="col">
                             <input type="text" class="form-control" id="noKK_edit" name="noKK" data-inputmask="'mask': ['9999-9999-9999-9999']" data-mask
                               required>
                           </div>
                           <div class="col">
-                            <button type="button" class="btn btn-info" id="getNoMap">Ambil No Map</button>
+                            <button type="button" class="btn btn-info" id="getNoMap_edit">Ambil No Map</button>
                           </div>
                         </div>
                       </div>
 
                       <!-- Nama Kepala Keluarga -->
                       <div class="form-group">
-                        <label data-error="wrong" data-success="right" for="namaKK">Nama Kepala Keluarga <span class="text-danger">*</span></label>
+                        <label data-error="wrong" data-success="right" for="namaKK_edit">Nama Kepala Keluarga <span class="text-danger">*</span></label>
                         <div class="form-row">
                           <div class="col">
                             <input type="text" class="form-control" id="namaKK_edit" name="namaKK" disabled>
                           </div>
                         </div>
-                        <div class="pakaiNamaKK form-check form-check-inline" style="display:none">
+                        <div class="pakaiNamaKK_edit form-check form-check-inline" style="display:none">
                           <input type="checkbox" class="form-check-input" name="pakeNamaKK" id="pakeNamaKK_edit">
                           <label for="pakeNamaKK" class="form-check-label" style="font-size:15px;"> Nama Pasien Sama Dengan Nama Kepala Keluarga</label>
                         </div>

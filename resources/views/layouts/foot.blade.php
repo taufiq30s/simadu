@@ -6,62 +6,63 @@
 <!-- Bootstrap 4 -->
 <script src="{{asset('bower_components/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- Morris.js charts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="{{asset('bower_components/admin-lte/plugins/morris/morris.min.js')}}"></script>
+{{-- <script src="{{asset('bower_components/admin-lte/plugins/morris/raphael-min.js')}}"></script> --}}
+{{-- <script src="{{asset('bower_components/admin-lte/plugins/morris/morris.min.js')}}"></script> --}}
 <!-- Sparkline -->
-<script src="{{asset('bower_components/admin-lte/plugins/sparkline/jquery.sparkline.min.js')}}"></script>
+{{-- <script src="{{asset('bower_components/admin-lte/plugins/sparkline/jquery.sparkline.min.js')}}"></script> --}}
 <!-- jvectormap -->
-<script src="{{asset('bower_components/admin-lte/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js')}}"></script>
-<script src="{{asset('bower_components/admin-lte/plugins/jvectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
+{{-- <script src="{{asset('bower_components/admin-lte/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js')}}"></script> --}}
+{{-- <script src="{{asset('bower_components/admin-lte/plugins/jvectormap/jquery-jvectormap-world-mill-en.js')}}"></script> --}}
 <!-- jQuery Knob Chart -->
-<script src="{{asset('bower_components/admin-lte/plugins/knob/jquery.knob.js')}}"></script>
+{{-- <script src="{{asset('bower_components/admin-lte/plugins/knob/jquery.knob.js')}}"></script> --}}
 <!-- daterangepicker -->
 <script src="{{asset('js/moment-with-locales.min.js')}}"></script>
 <script src="{{asset('bower_components/admin-lte/plugins/daterangepicker/daterangepicker.js')}}"></script>
 <!-- datepicker -->
 <script src="{{asset('bower_components/admin-lte/plugins/datepicker/bootstrap-datepicker.js')}}"></script>
 <!-- Bootstrap WYSIHTML5 -->
-<script src="{{asset('bower_components/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"></script>
+<script src="{{asset('bower_components/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}">
+</script>
 <!-- Slimscroll -->
 <script src="{{asset('bower_components/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js')}}"></script>
 <!-- FastClick -->
-<script src="{{asset('bower_components/admin-lte/plugins/fastclick/fastclick.js')}}"></script>
+{{-- <script src="{{asset('bower_components/admin-lte/plugins/fastclick/fastclick.js')}}"></script> --}}
 <!-- AdminLTE App -->
 <script src="{{asset('bower_components/admin-lte/dist/js/adminlte.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{asset('bower_components/admin-lte/dist/js/pages/dashboard.js')}}"></script>
+{{-- <script src="{{asset('bower_components/admin-lte/dist/js/pages/dashboard.js')}}"></script> --}}
 <!-- AdminLTE for demo purposes -->
-<script src="{{asset('bower_components/admin-lte/dist/js/demo.js')}}"></script>
+{{-- <script src="{{asset('bower_components/admin-lte/dist/js/demo.js')}}"></script> --}}
 <!-- InputMask -->
 <script src="{{asset('bower_components/admin-lte/plugins/input-mask/jquery.inputmask.js')}}"></script>
 <script src="{{asset('bower_components/admin-lte/plugins/input-mask/jquery.inputmask.date.extensions.js')}}"></script>
 <script src="{{asset('bower_components/admin-lte/plugins/input-mask/jquery.inputmask.extensions.js')}}"></script>
-<!-- Select2 -->
+<!-- Select2 (New Model Select Box) -->
 <script src="{{('/bower_components/admin-lte/plugins/select2/select2.full.min.js')}}"></script>
-<!-- iCheck 1.0.1 -->
+<!-- iCheck 1.0.1 (New Model Check Box) -->
 <script src="{{asset('bower_components/admin-lte/plugins/iCheck/icheck.min.js')}}"></script>
 <!-- SweetAlert -->
 <script src="{{asset('sweetalert/dist/sweetalert.min.js')}}"></script>
 <!-- IdleTimer -->
 <script src="{{asset('js/idle-timer.min.js')}}"></script>
 <!-- SmartWizard -->
-<script type="text/javascript" src="../dist/js/jquery.smartWizard.min.js"></script>
+<script src="{{asset('smartwizard/dist/js/jquery.smartWizard.min.js')}}"></script>
+<!-- jQuery Validator -->
+<script src="{{asset('bower_components/admin-lte/plugins/validation/jquery.validate.min.js')}}"></script>
+<!-- Instascan (QR Code Reader) -->
+<script src="{{asset('instascan/instascan.min.js')}}"></script>
+<!-- jQuery QR-Code Generator -->
+<script src="{{asset('jquery-qrcode-generator/jquery.qrcode.min.js')}}"></script>
+<script src="{{asset('jquery-qrcode-generator/qrcode.min.js')}}"></script>
 
 
 <script type="text/javascript">
   moment.locale('id');
 
-  // Set Waktu TimeOut Ketika User Idle
-  $(function() {
-    // Set idle time
-    $(document).idleTimer( 7200000 );
-  });
-
-  $(function() {
-      $(document).on( "idle.idleTimer", function(event, elem, obj){
-          swal("Sesi Program ini sudah habis.", 'Silahkan klik OK dan login kembali!', "information");
-          window.location.href = "/";
-      });  
+  // Set Peringatan Jika Sudah Session Expired
+  $( document ).ajaxError(function( event, jqxhr, settings, thrownError ) {
+    swal("Sesi Program ini sudah habis.", 'Silahkan klik OK dan login kembali!', "information");
+    window.location.href = "/";
   });
 
   // Test JS Function
@@ -74,8 +75,6 @@
   function validate_delete_rekam_medis() {
     confirm('Apakah data ini ingin di hapus?')
   }
-    
-  
 
     //Initialize Select2 Elements
     $('.select2').select2()
@@ -110,6 +109,7 @@
     	container: 'body',
     	placement: 'top'
     })
+
     $('#btn_detail_patient').popover({
     	trigger: 'hover',
     	content: 'Lihat Detail Pasien',
@@ -146,15 +146,17 @@
     	container: 'body',
     	placement: 'top'
     })
-
+    
     /*Pasien Area*/
     // === Get NoKK Based from No Map === //
     // == This function for Input Modal == //
+    // Ketika Klik Tombol Get No KK
     $("#getNoKK").click(function() {
       getNoKK();
       $('#noKK').focus();
     });
 
+    // Ketika User tekan Enter
     $('#noMap').keypress(function(event){
       var keycode = (event.keyCode ? event.keyCode : event.which);
       if(keycode == '13'){
@@ -163,6 +165,7 @@
       }
     });
 
+    // Function GET
     function getNoKK(){
       $.ajax({
         headers: {
@@ -264,6 +267,7 @@
     }
 
     // === Get No Map based on No KK === //
+    // Ketika User Tekan Tombol
     $('#getNoMap').click(function(){
       var noKK = $("#noKK").val();
       noKK = $.trim(((noKK.replace(/ /g,'')).replace(/-/g,'')).replace(/_/g,''));
@@ -271,6 +275,7 @@
       $('#noMap').focus();
     });
 
+    // Ketikan User Tekan Tombol Enter
     $('#noKK').keypress(function(event){
       var keycode = (event.keyCode ? event.keyCode : event.which);
       var noKK = $("#noKK").val();
@@ -281,6 +286,7 @@
       }
     });
 
+    // Function GET
     function getNoMap(noKK){
       $.ajax({
         headers: {
@@ -347,6 +353,20 @@
       {
         $('#namaPasien').val('');
         $('#namaPasien').prop("disabled", false);
+      }
+    });
+
+    // === Pakai Nama Kepala Keluarga Checked Behaviour in Edit Form === //
+    $('#pakeNamaKK_edit').click(function(){
+      if($('#pakeNamaKK_edit').is(':checked'))
+      {
+        $('#namaPasien_edit').val($('#namaKK_edit').val());
+        $('#namaPasien_edit').prop("disabled", true);
+      }
+      else
+      {
+        $('#namaPasien_edit').val('');
+        $('#namaPasien_edit').prop("disabled", false);
       }
     });
 
@@ -477,6 +497,9 @@
     $(document).on('click', '#btn_edit_pasien', function(){
       var NoPasien = ($(this).attr("data-id"));
       var token = $("meta[name='csrf-token']").attr("content");
+      // Reset Gender Radio Button
+      $('input[name=jenisKelamin_edit][value=Laki-Laki]').prop('checked',false).parent().removeClass('checked').attr('aria-checked', false);
+      $('input[name=jenisKelamin_edit][value=Perempuan]').prop('checked',false).parent().removeClass('checked').attr('aria-checked', false);
       $.ajax(
         {
           url: "/rekmed/pasien/"+NoPasien+"/edit",
@@ -488,9 +511,13 @@
             $('#noKK_edit').val(data.data.NoKK);
             $('#namaKK_edit').val(data.dataMap.NamaKepalaKeluarga);
             if(data.data.NamaPasien == data.dataMap.NamaKepalaKeluarga)
-              $(".pakaiNamaKK").show();
+            {  
+              $(".pakaiNamaKK_edit").show();
               $("#pakeNamaKK_edit").prop('checked', true);
               $("#namaPasien_edit").prop('disabled', true);
+            }
+            else
+              $("#namaPasien_edit").prop('disabled', false);
             $('#noNIK_edit').val(data.data.NoKTP);
             $('#noBPJS_edit').val(data.data.NoBPJS);
             $('#namaPasien_edit').val(data.data.NamaPasien);
@@ -505,10 +532,6 @@
         }
       )
     });
-
-    {{-- $('.date-picker').click(function(){
-      $('.date-picker').datepicker();
-    }) --}}
 
     // === Update Pasien === //
     $('#editPasien').click(function(e){
@@ -596,16 +619,42 @@
               },
               dataType: "json",
               success: function(){
-                console.log("sukses");
                 swal("Sukses", "Data Pasien berhasil dihapus!", "success");
                 table.ajax.reload();
               }
-            }
-            
+            }            
           )
         }
       })
     });
+
+    // === Print Kartu Pasien === //
+    // TO-DO: Atur Sistem Pencetakan Kartu
+    $(document).on('click', '#btn_print_pasien', function(){
+      var NoPasien = ($(this).attr("data-id"));
+      var token = $("meta[name='csrf-token']").attr("content");
+      $.ajax(
+        {
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+          url: "/rekmed/pasien/cetak/"+NoPasien,
+          type: 'GET',
+          data: {
+            noPasien : NoPasien,
+            _token : token,
+          },
+          dataType: "json",
+          success: function(){
+            // $('#untukNoPasien').val(data.noPasien);
+            // $('#untukNoMap').val(data.noMap);
+            // $('#areaQRCode').qrcode({width: xx, height: yy, text : data.noPasien});
+
+            // Tampilkan Print View & Operasionalnya
+          }
+        }
+      )
+    })
 
 
     /*Map Area*/
@@ -624,6 +673,7 @@
           noKK : noKK,
           namaKK : $("#namaKK").val(),
           alamat : $("#alamat").val(),
+          statusDaerah : $("#statusDaerah").val(),
           _token : $('meta[name="csrf-token"]').attr('content'),
         },
         dataType:'json',
@@ -688,7 +738,8 @@
             $('#noKK_edit').val(data.data.NoKK);
             $('#namaKK_edit').val(data.data.NamaKepalaKeluarga);
             $('#alamat_edit').val(data.data.Alamat);
-            $('#noMap').val(NoMap);
+            $('#statusDaerah_edit').val(data.data.DalamDaerah);
+            $('#noMap').val(NoMap);            
             $('#Modal_Edit_Map').modal('show');
           }
         }
@@ -719,6 +770,7 @@
           noKK : noKK,
           namaKK : $("#namaKK_edit").val(),
           alamat : $("#alamat_edit").val(),
+          statusDaerah : $("#statusDaerah_edit").val(),
           _token : $('meta[name="csrf-token"]').attr('content'),
         },
         dataType:'json',
@@ -771,12 +823,388 @@
                 swal("Sukses", "Data berhasil dihapus!", "success");
                 table.ajax.reload();
               }
-            }
-            
+            }            
           )
         }
       })
+    });
+    /*End of Map Area*/
+
+    /*Rekam Medis Area*/
+    let inisialized = 0;  // confirmTable's DataTable Inisalized Flag
+    // == Smart Wizard Initialized ==
+    $(document).on('click', '#addRekmed', function(){
+      $('#rekmedWizard').smartWizard({
+        selected: 0, // Initial selected step, 0 = first step
+        autoAdjustHeight: false, 
+        keyNavigation: false, // enable/disable key navigation.
+        lang : { // Language Variable
+          next : 'Selanjutnya',
+          previous : 'Sebelumnya'
+        },
+        useURLhash: false, // Enable selection of the step based on url hash
+        showStepURLhash: false, // Show url hash based on step
+        toolbarSettings: {
+          toolbarPosition: 'bottom', // none, top, bottom, both
+          toolbarButtonPosition: 'right', // left, right
+          showNextButton: true, // show/hide a Next button
+          showPreviousButton: true, // show/hide a Previous button
+          toolbarExtraButtons: [
+                          $('<button></button>').text('Finish')
+                                    .addClass('btn btn-info sw-btn-fin')
+                                    .on('click', function(){ 
+                                      alert('Finsih button click');                            
+                                    })
+            ], 
+        },
+        anchorSettings: {
+          anchorClickable: true, // Enable/Disable anchor navigation
+          enableAllAnchors: false, // Activates all anchors clickable all times
+          markDoneStep: true, // add done css
+          enableAnchorOnDoneStep: true, // Enable/Disable the done steps navigation
+          removeDoneStepOnNavigateBack: true, // While navigate back done step after active step will be cleared
+        },          
+        theme: 'arrow',
+        transitionEffect: 'fade', // Effect on navigation, none/slide/fade
+        transitionSpeed: '400'
+      });
+    });
+
+    //== Pengaturan Tampilan Toolbar
+    $('#rekmedWizard').on('showStep', function(e, anchorObject, stepNumber, stepDirection, stepPosition){
+      $('.sw-btn-fin').hide(); // Finish Button Hidden
+      if(stepNumber === 0)
+      {
+        $('.sw-btn-prev').hide();
+        $('.sw-btn-next').hide();
+      }
+      else if(stepPosition != 'final')
+      {
+        $('.sw-btn-prev').show();
+        $('.sw-btn-next').show();
+        $('.sw-btn-fin').hide();
+      }
+      else
+      {
+        $('.sw-btn-next').hide();
+        $('.sw-btn-fin').show(); // Show Finish Button
+      }
+
+      // Show Last Confirm
+      if(stepNumber === 3)
+      {
+        getLastConfirm();
+      }
+    });
+
+    //== Reset Form Wizard ==
+    $('#closeKunjunganModal').click(function(){
+      $('#rekmedWizard').smartWizard("reset");
+      $('#cariData').val("");
+      $('#searchFilter').val("pasien");
+      $("#result-table").hide();
+      $("#qrcodeScan").show();
+      if(inisialized==1) confirmTable.clear().destroy(); // Reset confirmTable
+      inisialized = 0;
+    });
+
+    //== Auto Set Table Header == 
+    $(document).on('click','#searchFilter',function(){
+      if(inisialized==1) // Reset confirmTable
+      {
+        confirmTable.clear().destroy(); 
+        inisialized = 0;
+      }
+      var filter = this.value; // get select value
+      var content; // HTML table markup
+      $('#cariData').val("");
+      if(filter == "pasien" || filter == "nik") 
+      {
+        $("#result-table").hide();
+        $("#qrcodeScan").show();
+      }
+      else 
+      {
+        $("#result-table").show();
+        $("#qrcodeScan").hide();
+      }
+      if(filter == "map" || filter == "kk")
+      {
+        content = "<th>No.Pasien</th><th>No.Map</th><th>No.KK</th><th>Nama Pasien</th>";
+      }
+      else if(filter == "nama")
+      {
+        content = "<th>No.Pasien</th><th>No.Map</th><th>No.KK</th><th>Nama Pasien</th><th>Alamat</th>";
+      }
+      else if(filter == "namakk")
+      {
+        content = "<th>No.Map</th><th>No.KK</th><th>Nama Kepala Keluarga</th><th>Alamat</th>";
+      }     
+      $("#result-table").empty(); // Reset Table Header
+      $("#result-table").append(content);
+      
+      // Reset DataMask of SearchBox
+      
+
+      // Set DataMask of SearchBox
+      if(filter == "pasien")
+      {
+        $('#cariData').inputmask("P-99999999");
+      }
+      else if(filter == "nik" || filter == "kk")
+      {
+        $('#cariData').inputmask("9999999999999999");
+      }
+      else if(filter == "map")
+      {
+        $('#cariData').inputmask("M-999999");
+      }
+
+      else
+        $('#cariData').inputmask("remove");
+    });
+
+    // Wizard Verification
+    $('#rekmedWizard').on('leaveStep', function(e, anchor, stepNumber, stepDirection) {
+      if(stepNumber === 2)
+      {
+        var verify = $('#verifyKeluhan');
+        verify.validate();
+        if(stepDirection === 'forward')
+        {
+          if(verify.valid()) return true;
+          else return false;
+        }        
+      }
+      else return true;
     })
 
-    
-  })
+    //== Open QR Scanner ==
+    $('#qrcodeScan').click(function(){
+      // Munculkan Tag Video Pada Modal
+      const video = document.createElement('div');
+      video.innerHTML = '<video id="qrScan" style="width:300px"></video>'
+      // Jalankan Modal pake Swal (SweetAlert)
+      swal({
+        title: "Scan QR Code Kartu Pasien", // Judulnya
+        content: video, // Isi Content
+        buttons: { // Setingan Tombol Cancel Saja
+          cancel: {
+            text: "Cancel",
+            value: "close",
+            visible: true,
+            className: "btn btn-outline-danger waves-effect ml-auto",
+            closeModal: true
+          },
+          confirm: false, // Hilangkan tombol ok
+        },
+        closeOnClickOutside: false, // Cegah biar swal tidak close saat klik diluarnya
+      })
+      // Jalankan jika user tekan close atau Swal ditutup
+      .then((value) => {
+        if(value == "close")
+          scanner.stop(); // Matikan Kamera
+      })
+      // Deklarasi Scanner
+      let scanner = new Instascan.Scanner({
+          video: document.getElementById('qrScan')
+      });
+      // Trigger Fungsi ketika mendeteksi QR Code
+      scanner.addListener('scan', function(content) {
+        var res = getDataPasien(content,0); //Jalankan getDataPasien yang return nilai
+        if(res == 0) // Jika Nilainya 0, tutup Swal
+          swal.close();
+      });
+      // Scanner akses kamera
+      Instascan.Camera.getCameras().then(cameras => 
+      {
+        if(cameras.length > 0){
+          scanner.start(cameras[0]);
+        } else {
+          alert("Kamera Tidak ditemukan");
+        }
+      }).catch(function (e) {
+        swal("Kamera Tidak Ditemukan", 'Pastikan kamera dalam keadaan menyala atau tersambung ke komputer!', "error");
+      });
+    })
+
+    //== Search Data ==
+    $('#searchData').click(function(){
+      var filter = $('#searchFilter').val();
+      if(filter == "pasien" || filter == "nik") 
+      {
+        var req = (filter == "pasien") ? 0 : 1;
+        getDataPasien(getCariDataVal(), req);
+      }
+      else if(filter == "namakk" || filter == "nama")
+      {
+        if(inisialized == 0) inisializeConfirmTable();
+        else confirmTable.ajax.reload();
+      }
+      else
+      {
+        getDataMap();
+      }
+    });
+
+    // == Search Data (Pressed Enter) ==
+    $('#cariData').keypress(function(event){
+      var keycode = (event.keyCode ? event.keyCode : event.which);
+      if(keycode == '13'){
+        $('#searchData').click();	
+      }
+    });
+
+    // Fetch Value dari cariData
+    function getCariDataVal()
+    {
+      return $('#cariData').val();
+    }
+
+    // Fetch Request Code
+    function getRequestCode()
+    {
+      return ($('#searchFilter').val() == "map") ? 0 : ($('#searchFilter').val() == "kk") ? 1 : ($('#searchFilter').val() == 'namakk') ? 2 : 3; 
+    }
+
+    // Fetch Last Confirmation
+    function getLastConfirm()
+    {
+      let poli = $('#poliTujuan').val();
+      $('#noPasien_lastConfirm').html($('#noPasien_confirm').text());
+      $('#noMap_lastConfirm').html($('#noMap_confirm').text());
+      $('#namaPasien_lastConfirm').html($('#namaPasien_confirm').text());
+      $('#usia_lastConfirm').html($('#usia_confirm').text());
+      $('#jk_lastConfirm').html($('#jk_confirm').text());
+      $('#keluhan_lastConfirm').html($('#keluhan').val());
+      $('#poli_lastConfirm').html((poli === 'R-001') ? 'Poli Pemeriksaan Umum' : (poli === 'R-002') ? 'Poli Gigi dan Mulut' : 'Poli Kesehatan Ibu dan Anak');
+    }
+
+    // Initialize DataTables
+    function inisializeConfirmTable()
+    {
+      let columns = [
+        {"data": (getRequestCode() != 2) ? "NoPasien" : "NoMap"},
+        {"data": (getRequestCode() != 2) ? "map.NoMap" : "NoKK"},
+        {"data": (getRequestCode() != 2) ? "NoKK" : "NamaKepalaKeluarga"},
+        {"data": (getRequestCode() != 2) ? "NamaPasien" : "Alamat"}
+      ];
+      if(getRequestCode() > 2) columns.push({"data" :  "map.Alamat"});
+      confirmTable = $('#dt_kunjungan_pencarian').DataTable({
+        "processing" : true,
+        "serverSide" : true,
+        "ajax" : {
+          url: (getRequestCode() < 2) ? "/rekmed/kunjungan/cekMap" : (getRequestCode() == 2) ? "/rekmed/kunjungan/cekNamaKK" : "/rekmed/kunjungan/cekNamaPasien",
+          data: function(d) {
+            d.searchVal = getCariDataVal();
+            d.request = getRequestCode();
+          }
+        },
+        "columns" : columns,
+        searching: false
+      });
+      inisialized = 1;
+    }
+
+    // AJAX Fetch Data Pasien
+    let prevPasienId = "";
+    function getDataPasien(noPasien, req)
+    {
+      $.ajax({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: "/rekmed/kunjungan/cekPasien",
+        type: 'GET',
+        data: {
+          noPasien: noPasien,
+          request : req,
+          _token : $('meta[name="csrf-token"]').attr('content'),
+        },
+        dataType: 'json',
+        success: function(data){
+          if(data.exists){
+            $('#rekmedWizard').smartWizard("next");
+            var tglSekarang = moment();
+            var tglLahir = moment(data.dataPasien.TglLahir);
+            var umur = tglSekarang.diff(tglLahir, 'year');
+            var noBPJS, riwayatAlergi;
+            if(data.dataPasien.NoBPJS == null) noBPJS = '-';
+            else noBPJS = data.dataPasien.NoBPJS;
+            if(data.dataPasien.RiwayatAlergi == null) riwayatAlergi = '-';
+            else riwayatAlergi = data.dataPasien.RiwayatAlergi;
+            $('#noPasien_confirm').html(data.dataPasien.NoPasien);
+            $('#noMap_confirm').html(data.dataMap.NoMap);
+            $('#noKK_confirm').html(data.dataPasien.NoKK);
+            $('#namaKK_confirm').html(data.dataMap.NamaKepalaKeluarga);
+            $('#alamat_confirm').html(data.dataMap.Alamat);
+            $('#statusDaerah_confirm').html((data.dataMap.DalamDaerah == 1) ? 'Dalam Daerah' : 'Luar Daerah');
+            $('#nik_confirm').html(data.dataPasien.NoKTP);
+            $('#noBPJS_confirm').html(noBPJS);
+            $('#namaPasien_confirm').html(data.dataPasien.NamaPasien);
+            $('#tempatTglLahir_confirm').html(data.dataPasien.TempatLahir+', '+moment(data.dataPasien.TglLahir).format('DD-MMMM-YYYY'));
+            $('#usia_confirm').html(umur+' Tahun');
+            $('#jk_confirm').html(data.dataPasien.JK);
+            $('#noHP_confirm').html(data.dataPasien.NoHP);
+            $('#riwayatAlergi_confirm').html(riwayatAlergi);
+          }
+          else{
+            swal("Nomor Pasien atau NIK Tidak Ditemukan", 'Silahkan periksa Nomor Pasien atau NIK yang anda masukkan!', "error");
+            return 1;
+          }
+        }
+      });
+      if($('#noPasien_confirm').text() != prevPasienId)
+      {
+        prevPasienId = $('#noPasien_confirm').text();
+        $('#keluhan').val('');
+        $('#poliTujuan').val('R-001');
+      }
+      return 0;
+    }
+
+    // AJAX Fetch Data Map
+    function getDataMap()
+    {
+      $.ajax({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: "/rekmed/kunjungan/verifySearch",
+        type: 'GET',
+        data: {
+          searchVal: getCariDataVal(),
+          request : getRequestCode(),
+          _token : $('meta[name="csrf-token"]').attr('content'),
+        },
+        dataType: 'json',
+        success: function(confirmData){
+          if(confirmData.exists){
+            if(inisialized == 0)
+            {
+              inisializeConfirmTable();
+            }
+            else{
+              confirmTable.ajax.reload();
+            }
+          }
+          else{
+            swal("Nomor Map atau Nomor KK Tidak Ditemukan", 'Silahkan periksa Nomor Map atau Nomor KK yang anda masukkan!', "error");
+          }
+        }
+      });
+    }
+
+    // When User Click No.Pasien
+    $(document).on('click', '#btn_select_pasien', function(){
+      getDataPasien($(this).attr("data-id"),0);
+    });
+
+    // When User Click No.Map
+    $(document).on('click', '#btn_select_map', function(){
+      $('#cariData').val($(this).attr("data-id"));
+      $('#searchFilter').val("map");
+      confirmTable.clear().destroy();
+      inisialized = 0;
+      $('#searchData').trigger('click');
+    });

@@ -19,6 +19,9 @@ class MapController extends Controller
     public function fetchTable()
     {
         return DataTables::of(Map::query())
+        ->editColumn('DalamDaerah', function($row){
+            return ($row->DalamDaerah == 1 ? 'Dalam Daerah' : 'Luar Daerah');
+        })
         ->addColumn('action', function($row){
             return '<button class="btn btn-outline-warning btn-sm" data-toggle="popover" id="btn_edit_map" data-id="'.$row->NoMap.'"><i class="fas fa-edit"></i></button>
             <button class="btn btn-outline-danger btn-sm" data-toggle="popover" id="btn_delete_map" data-id="'.$row->NoMap.'"><i class="fas fa-trash"></i></button>';
@@ -59,8 +62,9 @@ class MapController extends Controller
         return Map::create([
             'NoMap' => $MapID,
             'NoKK' => $data['noKK'],
-            'NamaKepalaKeluarga' => $data['namaKK'],
-            'Alamat' => $data['alamat']
+            'NamaKepalaKeluarga' => ucwords($data['namaKK']),
+            'Alamat' => $data['alamat'],
+            'DalamDaerah' => $data['statusDaerah'],
         ]);
     }
 
@@ -87,6 +91,7 @@ class MapController extends Controller
         $dataMap->NoKK = $req->noKK;
         $dataMap->NamaKepalaKeluarga = $req->namaKK;
         $dataMap->Alamat = $req->alamat;
+        $dataMap->DalamDaerah = $req->statusDaerah;
         $dataMap->save();
         return response()->json(['success' => true]);
     }

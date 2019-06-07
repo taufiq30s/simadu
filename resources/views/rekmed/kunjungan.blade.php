@@ -48,3 +48,4 @@
   </div>
   <!-- /container-fluid -->
 </section>
+<script>document.title = "Kunjungan Pasien | Dashboard";</script>

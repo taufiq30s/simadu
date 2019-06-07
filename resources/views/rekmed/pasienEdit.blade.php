@@ -62,12 +62,12 @@
                         <label data-error="wrong" data-success="right" for="namaKK_edit">Nama Kepala Keluarga <span class="text-danger">*</span></label>
                         <div class="form-row">
                           <div class="col">
-                            <input type="text" class="form-control" id="namaKK_edit" name="namaKK" disabled>
+                            <input type="text" class="form-control" id="namaKK_edit" name="namaKK_edit" disabled>
                           </div>
                         </div>
                         <div class="pakaiNamaKK_edit form-check form-check-inline" style="display:none">
-                          <input type="checkbox" class="form-check-input" name="pakeNamaKK" id="pakeNamaKK_edit">
-                          <label for="pakeNamaKK" class="form-check-label" style="font-size:15px;"> Nama Pasien Sama Dengan Nama Kepala Keluarga</label>
+                          <input type="checkbox" class="form-check-input" name="pakeNamaKK_edit" id="pakeNamaKK_edit">
+                          <label for="pakeNamaKK_edit" class="form-check-label" style="font-size:15px;"> Nama Pasien Sama Dengan Nama Kepala Keluarga</label>
                         </div>
                       </div>
 

@@ -31,6 +31,7 @@
                 <th>NO. KK</th>
                 <th>Nama Kepala Keluarga</th>
                 <th>Alamat</th>
+                <th>Status Daerah</th>
                 <th>Opsi</th>
               </tr>
             </thead>

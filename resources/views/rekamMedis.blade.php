@@ -25,7 +25,7 @@
     @elseif($view === 'pasien')
         @include('rekmed/fetchPasien');
     @elseif($view === 'kunjungan')
-        @include('rekmed/kunjungan');
+        @include('rekmed/fetchKunjungan');
     @else
         </script>
     @endif  

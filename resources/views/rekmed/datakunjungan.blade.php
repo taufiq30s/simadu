@@ -7,7 +7,7 @@
 
         <div class="text-left mb-3">
           <span class="ml-2"></span>
-          <a href="" class="btn btn-success btn-rounded my-3" data-toggle="modal" data-target="#Modal_Input_Rekam_Medis">Tambah Data Rekam Medis</a>
+          <a href="" class="btn btn-success btn-rounded my-3" data-toggle="modal" data-target="#Modal_Input_Rekam_Medis" id="addRekmed">Tambah Data Rekam Medis</a>
         </div>
       </div>
 

@@ -17,7 +17,7 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{asset('bower_components/admin-lte/plugins/font-awesome/css/all.min.css')}}">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css?v=1.0">
+  <!--<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css?v=1.0">-->
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('bower_components/admin-lte/dist/css/adminlte.min.css?v=1.0')}}">
   <!-- iCheck -->
@@ -35,11 +35,14 @@
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="{{asset('bower_components/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css?v=1.0')}}">
   <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link href="{{asset('bower_components/admin-lte/plugins/googlefont/css.css?family=Source+Sans+Pro:300,400,400i,700')}}" rel="stylesheet">
   <!-- Custom Style -->
   <link rel="stylesheet" href="{{asset('bower_components/admin-lte/dist/css/Puskesmas.css?v=1.0')}}">
   <!-- DataTables -->
   <link rel="stylesheet" href="{{asset('bower_components/admin-lte/plugins/datatables/dataTables.bootstrap4.css')}}">
+  <!-- SmartWizard -->
+  <link rel="stylesheet" href="{{asset('smartwizard/dist/css/smart_wizard.min.css')}}">
+  <link rel="stylesheet" href="{{asset('smartwizard/dist/css/smart_wizard_theme_arrows.css')}}">
 
   <style>
     .search{
@@ -47,6 +50,18 @@
     }
     #view > tbody > tr > td:first-child{
       width: 200px;
+    }
+    .filterGroup label {
+      float: left;
+      text-align: left;
+      font-weight: normal;
+    }
+    
+    .filterGroup select {
+        display: inline-block;
+        width: auto;
+        vertical-align: middle;
+        margin-left: 10px;
     }
     
   </style>

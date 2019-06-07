@@ -25,6 +25,7 @@
     "dependencies": {
         "admin-lte": "^3.0.0-alpha.2",
         "idle-timer": "^1.2.0",
+        "instascan": "^1.0.0",
         "smartwizard": "^4.3.1",
         "sweetalert": "^2.1.2"
     }

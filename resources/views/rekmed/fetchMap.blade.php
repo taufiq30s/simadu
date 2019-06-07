@@ -14,6 +14,7 @@
                     {"data": "NoKK"},
                     {"data": "NamaKepalaKeluarga"},
                     {"data": "Alamat"},
+                    {"data" : "DalamDaerah", orderable: false, searchable: false},
                     {"data" : "action", orderable: false, searchable: false}
                 ],                
             })

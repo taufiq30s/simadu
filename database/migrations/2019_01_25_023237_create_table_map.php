@@ -18,6 +18,7 @@ class CreateTableMap extends Migration
             $table->string('NoKK')->unique();
             $table->string('NamaKepalaKeluarga');
             $table->string('Alamat');
+            $table->boolean('DalamDaerah');
             $table->timestamps();
         });
     }

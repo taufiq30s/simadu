@@ -62,6 +62,18 @@
                             </div>
                           </div>
                         </div>
+                        <!-- Status Daerah Map -->
+                        <div class="form-group">
+                          <label data-error="wrong" data-success="right" for="statusDaerah">Status Daerah Map<span class="text-danger">*</span></label>
+                          <div class="form-row">
+                            <div class="col">
+                              <select class="form-control" id="statusDaerah_edit" name="statusDaerah">
+                                <option value="1" selected>Dalam Daerah</option>
+                                <option value="0">Luar Daerah</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>

@@ -5,7 +5,7 @@ $.extend( $.fn.dataTable.defaults, {
  
 });
 
-$().ready(function(){
+{{--  $().ready(function(){
     table = $('#dt_kunjungan_dashboard').DataTable({
         "processing" : true,
         "serverSide" : true,
@@ -28,5 +28,5 @@ $().ready(function(){
     $('#txt_search').on('keyup change', function (){
         table.search(this.value).draw();
     });
-});
+});  --}}
 </script>

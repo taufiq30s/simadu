@@ -8,9 +8,6 @@ use App\Pasien;
 use App\Map;
 use \Validator;
 use DataTables;
-use Faker\Provider\zh_CN\DateTime;
-use function GuzzleHttp\json_encode;
-use function GuzzleHttp\json_decode;
 
 class PasienController extends Controller
 {
@@ -141,7 +138,7 @@ class PasienController extends Controller
             'NoKK' => $data['noKK'],
             'NoKTP' => $data['noNIK'],
             'NoBPJS' => $data['noBPJS'],
-            'NamaPasien' => ucwords($data['namaPasien']),
+            'NamaPasien' => ucwords($data['namaPasien']), // Uppercase First Char
             'JK' => $data['jk'],
             'TempatLahir' => ucwords($data['tempatLahir']),
             'TglLahir' => $tglLahir,
@@ -172,8 +169,6 @@ class PasienController extends Controller
     public function update(Request $req ,$noPasien)
     {
         $dataPasien = Pasien::where('NoPasien',$noPasien)->first()->setKeyName('NoPasien');
-        // $TglLahir = strtotime($req->tglLahir);
-        // $TglLahir = date("Y-m-d", $TglLahir);
         if($dataPasien->NoKTP == $req->noNIK)
             if($dataPasien->NoBPJS == $req->noBPJS)
                 $this->validator($req->all(),0)->validate();

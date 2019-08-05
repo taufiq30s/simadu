@@ -34,7 +34,7 @@ class HomeController extends Controller
 
     public function dokter()
     {
-        return view('dokter');
+        return view('dokter', ['view' => 'dashboard']);
     }
 
     public function rekamMedis()

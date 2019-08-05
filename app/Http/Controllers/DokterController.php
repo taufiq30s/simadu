@@ -14,9 +14,10 @@ class DokterController extends Controller
 {
     public function index()
     {
-        $test = User::where('Username', 'admin')->first();
-        dd(($test->staff->NIP_Staff === null)? 'Null' : 'not null');
+        // $test = User::where('Username', 'admin')->first();
+        // dd(($test->staff->NIP_Staff === null)? 'Null' : 'not null');
         //return view('admin/registerDokter', ['test' => $test]);
+        return view('dokter', ['view' => 'dashboard']);
     }
 
     protected function validator(array $data)

@@ -192,6 +192,13 @@ class PasienController extends Controller
         return response()->json(['success' => true]);
     }
 
+    public function cetak($noPasien)
+    {
+        $dataPasien = Pasien::where('NoPasien',$noPasien)->first()->setKeyName('NoPasien');
+        $dataMap = Map::where('NoKK', $dataPasien->NoKK)->first();
+        return response()->json(['success' => true, 'noPasien' => $noPasien, 'noMap' => $dataMap->NoMap]);
+    }
+
     public function destroy($noPasien)
     {
         $dataPasien = Pasien::where('NoPasien',$noPasien)->first()->setKeyName('NoPasien');

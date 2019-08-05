@@ -1,10 +1,12 @@
-@extends('layouts.app')
-@section('content')
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading btn-primary">Welcome to Dokter Route</div>
-            </div>
+@include('layouts/head')
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        @include('layouts/navbar')
+        @include('layouts/sidenav')
+        <div class="content-wrapper">
+          @include('dokter/dashboard')
         </div>
-    </div>
-@endsection
+@include('layouts/jQuery')
+@include('layouts/footer')
+@include('layouts/foot')
+</body>

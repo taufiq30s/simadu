@@ -2,7 +2,7 @@
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         @include('layouts/navbar')
-        @include('rekmed/sidenav')
+        @include('layouts/sidenav')
         <div class="content-wrapper">
             @if ($view === 'dashboard')
                 @include('rekmed/dashboard')
@@ -19,7 +19,7 @@
     </div>
     @include('layouts/jQuery')
     @include('layouts/footer')
-    @include('layouts/foot')  
+    @include('layouts/foot')
     @if($view === 'map')
         @include('rekmed/fetchMap');
     @elseif($view === 'pasien')
@@ -28,5 +28,5 @@
         @include('rekmed/fetchKunjungan');
     @else
         </script>
-    @endif  
+    @endif
 </body>

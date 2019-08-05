@@ -63,7 +63,8 @@
       </div>
       <!--Footer-->
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-danger waves-effect ml-auto" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-outline-primary waves-effect ml-auto">Print</button>
+        <button type="button" class="btn btn-outline-danger waves-effect" data-dismiss="modal">Close</button>
       </div>
     </div>
     <!--/.Panel 7-->

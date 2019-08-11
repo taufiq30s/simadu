@@ -2,7 +2,7 @@
   <!-- Brand Logo -->
   <a href="index3.html" class="brand-link bg-success">
     <div class="brand-image img-circle elevation-3" style="margin-top:2px;"> <i class="fas fa-plus"></i> </div>
-    <span class="brand-text font-weight-light" style="overflow-wrap:break-word">Sistem Informasi Puskesmas Terpadu</span>
+    <span class="brand-text font-weight-light" style="overflow-wrap:break-word">SISFO Simadu</span>
   </a>
 
   <!-- Sidebar -->

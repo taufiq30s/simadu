@@ -1,5 +1,5 @@
 <form action="" method="" role="form">
-  <div class="modal fade" id="detailInventoryModals" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="detailDataObatModals" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header bg-success">
@@ -24,12 +24,16 @@
               <td>Antalgin ([Jenis])</td>
             </tr>
             <tr>
-              <th>Jumlah Stok Ditambah</th>
-              <td>250 [Satuan]</td>
+              <th>Jumlah Stok</th>
+              <td>257 [Satuan]</td>
             </tr>
             <tr>
-              <th>Tanggal Expired</th>
-              <td>25 Mei 2025</td>
+              <th>Tanggal Expired Paling Lama</th>
+              <td>25 Mei 2025 (250 [satuan])</td>
+            </tr>
+            <tr>
+              <th>Tanggal Expired Paling Cepat</th>
+              <td>20 Mei 2020 (7 [satuan])</td>
             </tr>
             <tr>
               <th>User Transaksi</th>

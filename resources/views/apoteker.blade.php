@@ -11,7 +11,7 @@
           @elseif($view === 'inventory')
               @include('apotek/inventory')
           @elseif($view === 'obat')
-              @include('apotek/obat')
+              @include('apotek/dataObat')
           @endif
         </div>
 @include('layouts/jQuery')

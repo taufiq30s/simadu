@@ -1273,17 +1273,26 @@
       })
       $(function () {
         //Initialize Select2 Elements
-        $('#namaObat').select2()
+        $('#expiredTambahObat').select2()
         $('#expiredTambahObat').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
-      }
-      $('#btnFinishAdd').on('click', function(){
-        swal({
-          title : "Tambah Data",
-          text : "Data berhasil ditambah.",
-          icon : "success"
-        })
-      });
+        $('[data-mask]').inputmask()
 
+        $('#btnFinishAdd').on('click', function(){
+          swal({
+            title : "Tambah Data",
+            text : "Data berhasil ditambah.",
+            icon : "success"
+          })
+        });
+
+        $('#btnFinishAddDataObat').on('click', function(){
+          swal({
+            title : "Tambah Data",
+            text : "Data berhasil ditambah.",
+            icon : "success"
+          })
+        });
+      }
 
     // General Caller function
     // Edited by Richy

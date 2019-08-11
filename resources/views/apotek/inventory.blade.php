@@ -81,7 +81,7 @@
               @include('/apotek/inventory/detailInventoryModal')
               @include('/apotek/inventory/editInventoryModal')
               <!-- <a href="" class="btn btn-success btn-rounded my-3" data-toggle="modal" data-target="#Modal_Input_Pasien">Tambah Data Pasien</a> -->
-              <button class="btn btn-success btn-rounded my-3" id="addObat" data-toggle="modal" data-target="#addInventoryObatModals"><i class="fas fa-plus"></i> Tambah</button>
+              <button class="btn btn-success btn-rounded my-3" id="addObat" data-toggle="modal" data-target="#addInventoryModals"><i class="fas fa-plus"></i> Tambah</button>
             </div>
           </div>
 

@@ -145,6 +145,14 @@
 </section>
 <script type="text/javascript">
 
+  function addDataObat(){
+    swal({
+      title : "Tambah Data",
+      text : "Data berhasil ditambah.",
+      icon : "success"
+    })
+  }
+
   function editDataObat(namaObat){
     swal({
       title : "Konfirmasi Perubahan",

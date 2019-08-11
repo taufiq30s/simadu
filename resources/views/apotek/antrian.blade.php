@@ -74,14 +74,17 @@
         <div class="row">
           <div class="col col-lg-6">
             <!-- Modal Data Pasien dan Data Penyakit-->
+            @include('/apotek/antrian/detailAntrianModal')
+            <!-- @include('dokter/tes') -->
+            <!-- /Modal Data Pasien dan Data Penyakit-->
 
             <div class="text-left mb-3">
               <span class="ml-2"></span>
-              @include('/apotek/inventory/addInventoryModal')
-              @include('/apotek/inventory/detailInventoryModal')
-              @include('/apotek/inventory/editInventoryModal')
+
               <!-- <a href="" class="btn btn-success btn-rounded my-3" data-toggle="modal" data-target="#Modal_Input_Pasien">Tambah Data Pasien</a> -->
-              <button class="btn btn-success btn-rounded my-3" id="addObat" data-toggle="modal" data-target="#addInventoryObatModals"><i class="fas fa-plus"></i> Tambah</button>
+              <button class="btn btn-primary btn-rounded my-3" onclick="Panggil()" id="CallPrev" data-toggle="modal"><i class="fas fa-arrow-circle-left"></i> Sebelumnya</button>
+              <button class="btn btn-success btn-rounded my-3" onclick="Panggil()" id="CallNext" data-toggle="modal">Selanjutnya <i class="fas fa-arrow-circle-right"></i></button>
+              <button class="btn btn-Warning btn-rounded my-3" onclick="PanggilUlang()" id="Recall" data-toggle="modal">Panggil Ulang <i class="fas fa-sync ml-1"></i></button>
             </div>
           </div>
 
@@ -89,7 +92,7 @@
           <div class="col col-lg-4 col-4 mt-3 ml-auto">
             <div class="row">
               <div class="col">
-                <input type="text" name="txt_search" id="txt_search" placeholder="Kode Obat / Nama Obat / Jenis Obat / Tanggal Expired" class="form-control">
+                <input type="text" name="txt_search" id="txt_search" placeholder="Nomor Antrian / NIK / Nama Pasien / Keluhan" class="form-control">
               </div>
             </div>
           </div>
@@ -102,40 +105,49 @@
     <!-- Row Information -->
     <div class="row">
       <div class="col col-11 m-auto">
-        <table class="table table-striped table-hover" id="tblInventoryObat">
+        <table class="table table-striped">
           <thead>
             <tr>
-              <th scope="col">Nama Obat</th>
-              <th scope="col">Jenis Obat</th>
-              <th scope="col">Tanggal Penambahan</th>
-              <th scope="col">Stok Ditambah</th>
-              <th scope="col">Tanggal Expired</th>
+              <th scope="col" class="text-center">No. Antrian</th>
+              <th scope="col">Nomor Pasien</th>
+              <th scope="col">Nama Lengkap</th>
+              <th scope="col" class="text-center">BPJS</th>
+              <th scope="col">Diagnosa</th>
               <th scope="col" class="text-center">Opsi</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>[Nama Obat]</td>
-              <td>[jenis obat]</td>
-              <td>[Tanggal Penambahan]</td>
-              <td>[Jumlah Stok Ditambahkan] [Satuan]</td>
-              <td>[Tanggal Penambahan]</td>
+              <th scope="row" class="text-center">1</th>
+              <td>P-0000001</td>
+              <td>Siminim</td>
+              <td class="text-center"><i class="fas fa-times text-danger"></i></td>
+              <td>Sakit Perut, Kepala pusing, Mual....</td>
               <td class="text-center">
-                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#detailInventoryModals"><i class="fas fa-info-circle"></i> Detail</button>
-                <button class="btn btn-warning btn-sm" onclick="editInvObat('Vitacimin')"><i class="fas fa-edit"></i> Edit</button>
-                <button class="btn btn-danger btn-sm" onclick="hapusInvObat('Vitacimin')"><i class="fas fa-trash"></i> Hapus</button>
+                <button class="btn btn-primary btn-sm" onclick="ShowModals()"><i class="fas fa-info-circle"></i> Detail</button>
+                <button class="btn btn-Danger btn-sm" onclick="PanggilDarurat()"><i class="fas fa-exclamation-triangle"></i> Panggil</button>
+              </td>
+            </tr>
+            <tr class="row-active">
+              <th scope="row" class="text-center">1</th>
+              <td>P-0000002</td>
+              <td>Siminim</td>
+              <td class="text-center"><i class="fas fa-check text-success"></i></td>
+              <td>Sakit Perut, Kepala pusing, Mual....</td>
+              <td class="text-center">
+                <button class="btn btn-primary btn-sm" onclick="ShowModals()"><i class="fas fa-info-circle"></i> Detail</button>
+                <button class="btn btn-Danger btn-sm" onclick="PanggilDarurat()"><i class="fas fa-exclamation-triangle"></i> Panggil</button>
               </td>
             </tr>
             <tr>
-              <td>Bodrex</td>
-              <td>Tablet</td>
-              <td>29 April 2091</td>
-              <td>1 Tablet</td>
-              <td>5 Mei 2091</td>
+              <th scope="row" class="text-center">1</th>
+              <td>P-0000003</td>
+              <td>Siminim</td>
+              <td class="text-center"><i class="fas fa-times text-danger"></i></td>
+              <td>Sakit Perut, Kepala pusing, Mual....</td>
               <td class="text-center">
-                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#detailInventoryModals"><i class="fas fa-info-circle"></i> Detail</button>
-                <button class="btn btn-warning btn-sm" onclick="editInvObat('Vitacimin')"><i class="fas fa-edit"></i> Edit</button>
-                <button class="btn btn-danger btn-sm" onclick="hapusInvObat('Vitacimin')"><i class="fas fa-trash"></i> Hapus</button>
+                <button class="btn btn-primary btn-sm" onclick="ShowModals()"><i class="fas fa-info-circle"></i> Detail</button>
+                <button class="btn btn-Danger btn-sm" onclick="PanggilDarurat()"><i class="fas fa-exclamation-triangle"></i> Panggil</button>
               </td>
             </tr>
           </tbody>
@@ -147,6 +159,72 @@
   <!-- /.container-fluid -->
 </section>
 <script type="text/javascript">
+var callCount = 0;
+var callMax = 4;
+
+function funcPanggil(nama, sebutan){
+  var willCall;
+  swal({
+    title: "Konfirmasi Panggil",
+    text: "Apakah " + sebutan + " " + nama + " Sudah Datang?",
+    icon: "info",
+    buttons: ['Belum', 'Sudah'],
+    allowOutsideClick: false,
+    html: true
+  }).then((willCall) => {
+      if (willCall) {
+        callCount = 0;
+        ShowModals();
+      } else {
+        if(callCount <= callMax){
+          swal("Silahkan Lakukan Panggilan Ulang!");
+          callCount += 1;
+        }
+      }
+  });
+}
+
+function Panggil(nomorAntrian = null) {
+  var tryCall = false;
+  if(callCount >= callMax || callCount == 0){
+    funcPanggil('Sanji', 'Bapak');
+  }
+  else {
+    swal({
+      title : "Konfirmasi Panggilan",
+      text  : "Batas panggil ulang belum habis, apakah ingin melanjutkan antrian?",
+      icon  : "warning",
+      buttons :['Panggil Ulang', 'Lanjutkan'],
+      allowOutsideClick : false
+    }).then((tryCall) => {
+      callCount = 0;
+      funcPanggil('Sanji', 'Bapak');
+    });
+  }
+}
+function PanggilUlang(nomorAntrian = null){
+  if(callCount < callMax){
+    funcPanggil('Sanji', 'Bapak');
+  } else {
+    swal("Batas panggil ulang telah habis, silahkan panggil pasien berikutnya!");
+  }
+}
+function PanggilDarurat(){
+  swal({
+    title: "Konfirmasi Panggil Darurat",
+    text : "Apakah yakin ingin memanggil pasien ***** secara darurat?",
+    icon : "error",
+    buttons : ["Batal", "Panggil"],
+    dangerMode : true
+  }).then((darurat) => {
+    Panggil();
+  })
+}
+
+
+function ShowModals(){
+  $('#detailAntrianModals').modal('show');
+}
 function editInvObat(namaObat){
   swal({
     title : "Konfirmasi Perubahan",

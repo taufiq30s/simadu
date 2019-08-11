@@ -8,8 +8,10 @@
       Rekam Medis
     @elseif($role === 'dokter')
       Dokter
-    @else if($role === 'apoteker')
+    @elseif($role === 'apoteker')
       Apoteker
+    @elseif($role === 'admin')
+      Admin
     @endif
     | Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->

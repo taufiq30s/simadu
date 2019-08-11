@@ -22,6 +22,8 @@
             {{Auth::user()->dokter->NamaDokter}}
           @elseif($role === 'apoteker')
             {{Auth::user()->apoteker->NamaApoteker}}
+          @elseif($role === 'admin')
+              {{Auth::user()->username}}
           @endif
         </a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -133,6 +135,39 @@
               <i class="nav-icon fas fa-file-invoice"></i>
               <p>
                 Data Obat
+              </p>
+            </a>
+          </li>
+        @elseif($role === 'admin')
+          <li class="nav-item">
+            <a href="/admin" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/users" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Users
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/ruangan" class="nav-link">
+              <i class="nav-icon fas fa-boxes"></i>
+              <p>
+                Daftar Ruangan
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/config" class="nav-link">
+              <i class="nav-icon fas fa-wrench"></i>
+              <p>
+                Pengaturan Sistem
               </p>
             </a>
           </li>

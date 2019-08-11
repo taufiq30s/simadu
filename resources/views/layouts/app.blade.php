@@ -20,10 +20,61 @@
     <!-- Styles -->
     {{-- <link href="{{ asset('/public/css/app.css') }}" rel="stylesheet">     !For Live Server --}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">     {{--!For Develop Server--}}
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{asset('bower_components/admin-lte/plugins/font-awesome/css/all.min.css')}}">
+    <!-- Ionicons -->
+    <!--<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css?v=1.0">-->
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{asset('bower_components/admin-lte/dist/css/adminlte.min.css?v=1.0')}}">
+    <!-- Bootstrap 4 -->
+    <script defer src="{{asset('bower_components/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <!-- AdminLTE App -->
+    <script defer src="{{asset('bower_components/admin-lte/dist/js/adminlte.js')}}"></script>
+    <script defer src="{{asset('bower_components/admin-lte/jquery/jquery.min.js')}}"></script>
+    <style media="screen">
+      .login-body{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        z-index: -9999;
+        background-image: url("{{asset('image/medical-background.png')}}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+      .login-icon{
+        width: 100px;
+        height: 100px;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        border:3px solid gray;
+      }
+      .login-card{
+        border-radius: 0 !important;
+      }
+      .login-form-input .input-group-text{
+        background-color: transparent !important;
+        margin-left: -2.5rem;
+        border: none;
+        z-index: 9999;
+      }
+      .login-form-input .form-control{
+        border-radius: 0 !important;
+      }
+
+    </style>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel" hidden>
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}

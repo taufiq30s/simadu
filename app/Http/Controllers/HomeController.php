@@ -44,7 +44,7 @@ class HomeController extends Controller
 
     public function apoteker()
     {
-        return view('apoteker');
+        return view('apoteker', ['view' => 'dashboard']);
     }
 
     public function root()

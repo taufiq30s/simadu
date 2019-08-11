@@ -1,4 +1,4 @@
-<footer class="main-footer mt-5">
+<footer class="main-footer">
   <strong>Copyright &copy; 2019 Simadu.</strong>
   All rights reserved.
   <div class="float-right d-none d-sm-inline-block">

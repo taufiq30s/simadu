@@ -40,15 +40,15 @@
 <!-- Select2 (New Model Select Box) -->
 <script src="{{('/bower_components/admin-lte/plugins/select2/select2.full.min.js')}}"></script>
 <!-- iCheck 1.0.1 (New Model Check Box) -->
-<script src="{{asset('bower_components/admin-lte/plugins/iCheck/icheck.min.js')}}"></script>
+<script defer src="{{asset('bower_components/admin-lte/plugins/iCheck/icheck.min.js')}}"></script>
 <!-- SweetAlert -->
 <script src="{{asset('sweetalert/dist/sweetalert.min.js')}}"></script>
 <!-- IdleTimer -->
 <script src="{{asset('js/idle-timer.min.js')}}"></script>
 <!-- SmartWizard -->
-<script src="{{asset('smartwizard/dist/js/jquery.smartWizard.min.js')}}"></script>
+<script defer src="{{asset('smartwizard/dist/js/jquery.smartWizard.min.js')}}"></script>
 <!-- jQuery Validator -->
-<script src="{{asset('bower_components/admin-lte/plugins/validation/jquery.validate.min.js')}}"></script>
+<script defer src="{{asset('bower_components/admin-lte/plugins/validation/jquery.validate.min.js')}}"></script>
 <!-- Instascan (QR Code Reader) -->
 <script src="{{asset('instascan/instascan.min.js')}}"></script>
 <!-- jQuery QR-Code Generator -->
@@ -56,7 +56,7 @@
 <script src="{{asset('jquery-qrcode-generator/qrcode.min.js')}}"></script>
 
 
-<script type="text/javascript">
+<script async type="text/javascript">
   moment.locale('id');
 
   // Set Peringatan Jika Sudah Session Expired
@@ -146,7 +146,7 @@
     	container: 'body',
     	placement: 'top'
     })
-    
+
     /*Pasien Area*/
     // === Get NoKK Based from No Map === //
     // == This function for Input Modal == //
@@ -161,7 +161,7 @@
       var keycode = (event.keyCode ? event.keyCode : event.which);
       if(keycode == '13'){
         getNoKK();
-        $('#noKK').focus();	
+        $('#noKK').focus();
       }
     });
 
@@ -175,7 +175,7 @@
         type: 'GET',
         data: {
             noMap : $("#noMap").val(),
-            _token : $('meta[name="csrf-token"]').attr('content'), 
+            _token : $('meta[name="csrf-token"]').attr('content'),
         },
         dataType: 'json',
         success: function(data){
@@ -220,7 +220,7 @@
       var keycode = (event.keyCode ? event.keyCode : event.which);
       if(keycode == '13'){
         getNoKK_Edit();
-        $('#noKK_edit').focus();	
+        $('#noKK_edit').focus();
       }
     });
 
@@ -233,7 +233,7 @@
         type: 'GET',
         data: {
             noMap : $("#noMap_edit").val(),
-            _token : $('meta[name="csrf-token"]').attr('content'), 
+            _token : $('meta[name="csrf-token"]').attr('content'),
         },
         dataType: 'json',
         success: function(data){
@@ -282,7 +282,7 @@
       noKK = $.trim(((noKK.replace(/ /g,'')).replace(/-/g,'')).replace(/_/g,''));
       if(keycode == '13'){
         getNoMap(noKK);
-        $('#noMap').focus();	
+        $('#noMap').focus();
       }
     });
 
@@ -511,7 +511,7 @@
             $('#noKK_edit').val(data.data.NoKK);
             $('#namaKK_edit').val(data.dataMap.NamaKepalaKeluarga);
             if(data.data.NamaPasien == data.dataMap.NamaKepalaKeluarga)
-            {  
+            {
               $(".pakaiNamaKK_edit").show();
               $("#pakeNamaKK_edit").prop('checked', true);
               $("#namaPasien_edit").prop('disabled', true);
@@ -622,7 +622,7 @@
                 swal("Sukses", "Data Pasien berhasil dihapus!", "success");
                 table.ajax.reload();
               }
-            }            
+            }
           )
         }
       })
@@ -733,13 +733,13 @@
           dataType:'json',
           success: function(data)
           {
-            
+
             $('#noMap_edit').val(data.data.NoMap);
             $('#noKK_edit').val(data.data.NoKK);
             $('#namaKK_edit').val(data.data.NamaKepalaKeluarga);
             $('#alamat_edit').val(data.data.Alamat);
             $('#statusDaerah_edit').val(data.data.DalamDaerah);
-            $('#noMap').val(NoMap);            
+            $('#noMap').val(NoMap);
             $('#Modal_Edit_Map').modal('show');
           }
         }
@@ -794,7 +794,7 @@
         }
       })
     });
-    
+
     // === Delete Map === //
     $(document).on('click','#btn_delete_map',function(){
       var NoMap = ($(this).attr("data-id"));
@@ -823,7 +823,7 @@
                 swal("Sukses", "Data berhasil dihapus!", "success");
                 table.ajax.reload();
               }
-            }            
+            }
           )
         }
       })
@@ -836,7 +836,7 @@
     $(document).on('click', '#addRekmed', function(){
       $('#rekmedWizard').smartWizard({
         selected: 0, // Initial selected step, 0 = first step
-        autoAdjustHeight: false, 
+        autoAdjustHeight: false,
         keyNavigation: false, // enable/disable key navigation.
         lang : { // Language Variable
           next : 'Selanjutnya',
@@ -852,10 +852,10 @@
           toolbarExtraButtons: [
                           $('<button></button>').text('Finish')
                                     .addClass('btn btn-info sw-btn-fin')
-                                    .on('click', function(){ 
-                                      alert('Finsih button click');                            
+                                    .on('click', function(){
+                                      alert('Finsih button click');
                                     })
-            ], 
+            ],
         },
         anchorSettings: {
           anchorClickable: true, // Enable/Disable anchor navigation
@@ -863,7 +863,7 @@
           markDoneStep: true, // add done css
           enableAnchorOnDoneStep: true, // Enable/Disable the done steps navigation
           removeDoneStepOnNavigateBack: true, // While navigate back done step after active step will be cleared
-        },          
+        },
         theme: 'arrow',
         transitionEffect: 'fade', // Effect on navigation, none/slide/fade
         transitionSpeed: '400'
@@ -908,22 +908,22 @@
       inisialized = 0;
     });
 
-    //== Auto Set Table Header == 
+    //== Auto Set Table Header ==
     $(document).on('click','#searchFilter',function(){
       if(inisialized==1) // Reset confirmTable
       {
-        confirmTable.clear().destroy(); 
+        confirmTable.clear().destroy();
         inisialized = 0;
       }
       var filter = this.value; // get select value
       var content; // HTML table markup
       $('#cariData').val("");
-      if(filter == "pasien" || filter == "nik") 
+      if(filter == "pasien" || filter == "nik")
       {
         $("#result-table").hide();
         $("#qrcodeScan").show();
       }
-      else 
+      else
       {
         $("#result-table").show();
         $("#qrcodeScan").hide();
@@ -939,12 +939,12 @@
       else if(filter == "namakk")
       {
         content = "<th>No.Map</th><th>No.KK</th><th>Nama Kepala Keluarga</th><th>Alamat</th>";
-      }     
+      }
       $("#result-table").empty(); // Reset Table Header
       $("#result-table").append(content);
-      
+
       // Reset DataMask of SearchBox
-      
+
 
       // Set DataMask of SearchBox
       if(filter == "pasien")
@@ -974,7 +974,7 @@
         {
           if(verify.valid()) return true;
           else return false;
-        }        
+        }
       }
       else return true;
     })
@@ -1016,7 +1016,7 @@
           swal.close();
       });
       // Scanner akses kamera
-      Instascan.Camera.getCameras().then(cameras => 
+      Instascan.Camera.getCameras().then(cameras =>
       {
         if(cameras.length > 0){
           scanner.start(cameras[0]);
@@ -1031,7 +1031,7 @@
     //== Search Data ==
     $('#searchData').click(function(){
       var filter = $('#searchFilter').val();
-      if(filter == "pasien" || filter == "nik") 
+      if(filter == "pasien" || filter == "nik")
       {
         var req = (filter == "pasien") ? 0 : 1;
         getDataPasien(getCariDataVal(), req);
@@ -1051,7 +1051,7 @@
     $('#cariData').keypress(function(event){
       var keycode = (event.keyCode ? event.keyCode : event.which);
       if(keycode == '13'){
-        $('#searchData').click();	
+        $('#searchData').click();
       }
     });
 
@@ -1064,7 +1064,7 @@
     // Fetch Request Code
     function getRequestCode()
     {
-      return ($('#searchFilter').val() == "map") ? 0 : ($('#searchFilter').val() == "kk") ? 1 : ($('#searchFilter').val() == 'namakk') ? 2 : 3; 
+      return ($('#searchFilter').val() == "map") ? 0 : ($('#searchFilter').val() == "kk") ? 1 : ($('#searchFilter').val() == 'namakk') ? 2 : 3;
     }
 
     // Fetch Last Confirmation
@@ -1207,4 +1207,84 @@
       confirmTable.clear().destroy();
       inisialized = 0;
       $('#searchData').trigger('click');
+<<<<<<< Updated upstream
     });
+=======
+    });
+
+
+    // Poli Area
+
+    // SmartWizard for Poli
+    $(document).on('show', '#Modal_Input_Poli', function(){
+      $('#pengobatanWizard').smartWizard({
+        selected: 0, // Initial selected step, 0 = first step
+        autoAdjustHeight: false,
+        keyNavigation: false, // enable/disable key navigation.
+        lang : { // Language Variable
+          next : 'Selanjutnya',
+          previous : 'Sebelumnya'
+        },
+        useURLhash: false, // Enable selection of the step based on url hash
+        showStepURLhash: false, // Show url hash based on step
+        toolbarSettings: {
+          toolbarPosition: 'bottom', // none, top, bottom, both
+          toolbarButtonPosition: 'right', // left, right
+          showNextButton: true, // show/hide a Next button
+          showPreviousButton: true, // show/hide a Previous button
+          toolbarExtraButtons: [
+                          $('<button></button>').text('Finish')
+                                    .addClass('btn btn-info sw-btn-fin')
+                                    .on('click', function(){
+                                      alert('Finsih button click');
+                                    })
+            ],
+        },
+        anchorSettings: {
+          anchorClickable: true, // Enable/Disable anchor navigation
+          enableAllAnchors: false, // Activates all anchors clickable all times
+          markDoneStep: true, // add done css
+          enableAnchorOnDoneStep: true, // Enable/Disable the done steps navigation
+          removeDoneStepOnNavigateBack: true, // While navigate back done step after active step will be cleared
+        },
+        theme: 'arrow',
+        transitionEffect: 'fade', // Effect on navigation, none/slide/fade
+        transitionSpeed: '400'
+      });
+    });
+
+
+
+    //Apotek Area
+
+    // DataTables Inventory Obat
+      $('#tblInventoryObat').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": true,
+        "ordering": true,
+        "info": false,
+        "autoWidth": false,
+        "pageLength" : 1
+      });
+
+      $('#addDataObatModals').on('shown.bs.modal', function () {
+        $('#namaObat').focus()
+      })
+      $(function () {
+        //Initialize Select2 Elements
+        $('#namaObat').select2()
+        $('#expiredTambahObat').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+      }
+      $('#btnFinishAdd').on('click', function(){
+        swal({
+          title : "Tambah Data",
+          text : "Data berhasil ditambah.",
+          icon : "success"
+        })
+      });
+
+
+    // General Caller function
+    // Edited by Richy
+>>>>>>> Stashed changes

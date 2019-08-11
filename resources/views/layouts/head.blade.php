@@ -1,4 +1,4 @@
-<head>
+<head defer>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -56,13 +56,13 @@
       text-align: left;
       font-weight: normal;
     }
-    
+
     .filterGroup select {
         display: inline-block;
         width: auto;
         vertical-align: middle;
         margin-left: 10px;
     }
-    
+
   </style>
 </head>

@@ -36,7 +36,7 @@ Route::get('login', [
     Route::group(['middleware' => 'App\Http\Middleware\Admin'], function()
     {
         Route::match(['get', 'post'], '/admin', 'HomeController@admin');
-        
+
         // Start User Configuration Route
         Route::get('/admin/users', 'UsersController@index');
         Route::get('/admin/new-user', 'UsersController@create');
@@ -59,7 +59,7 @@ Route::get('login', [
         Route::get('/admin/config', 'ConfigController@index');
         Route::post('/admin/config/apply', 'ConfigController@apply');
         // End Special Admin Program Configuration
-        
+
     });
 
     Route::group(['middleware' => 'App\Http\Middleware\Dokter'], function()
@@ -83,7 +83,7 @@ Route::get('login', [
         Route::get('/rekmed/pasien/cetak/{noPasien}', 'PasienController@cetak');
         Route::delete('/rekmed/pasien/{noPasien}', 'PasienController@destroy');
         // End Pasien Route From Rekmed
-        
+
         // Start Map Route From Rekmed
         Route::get('/rekmed/map', 'MapController@showMapDatabyRekmed');
         Route::get('/rekemd/map/fetch', 'MapController@fetchTable')->name('map.fetch');
@@ -112,6 +112,9 @@ Route::get('login', [
     Route::group(['middleware' => 'App\Http\Middleware\Apoteker'], function()
     {
         Route::match(['get', 'post'], '/apotek', 'HomeController@apoteker');
+        Route::get('/apotek/antrian', 'ApotekerController@antrian');
+        Route::get('/apotek/inventory', 'ApotekerController@inventory');
+        Route::get('/apotek/obat', 'ApotekerController@dataObat');
     });
 
 //  End Middleware Route Login and access page
